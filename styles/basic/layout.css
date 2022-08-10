@@ -1,0 +1,12 @@
+.main-layout {
+    /* max-width: 980px; */
+    margin: 0 auto;
+    gap: 48px;
+}
+
+.card-layout {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+

@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: playfair, serif;
+    color: var(--clr1);
+}
+
+body {
+    font-family: lato;
+    margin: 0;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+a {
+    color: var(--clr2);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid var(--clr2);
+    background-color: transparent;
+    padding: 1em 0;
+    max-width: 400px;
+    width: 100%;
+}
