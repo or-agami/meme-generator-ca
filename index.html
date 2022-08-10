@@ -14,7 +14,7 @@
 
     <section class="main-header">
         <header class="main-header-nav flex align-center space-between">
-            <img class="memegen-logo" src="assets/logo/memegen-logo.png" alt="Meme-gen">
+            <img class="memegen-logo" onclick="onGoToGallery()" src="assets/logo/memegen-logo.png" alt="Meme-gen">
             <ul class="main-nav clean-list flex">
                 <li class=""><a class="flex align-center justify-center clean-link" href="#">Memes</a></li>
                 <li class=""><a class="flex align-center justify-center clean-link" href="#">Gallery</a></li>
@@ -95,14 +95,14 @@
 
             <div class="line-control">
                 <div class="line-btns flex space-between align-center">
-                    <button class="move-up-btn" title="Move up" onclick="onMoveLine(-25)">
+                    <button class="move-up-btn" title="Move up" onclick="onMoveLine(-15)">
                         <svg width="8" height="14" viewBox="0 0 8 14">
                             <path id="UpArrow"
                                 d="M4.35355 0.646447C4.15829 0.451184 3.84171 0.451184 3.64645 0.646447L0.464466 3.82843C0.269204 4.02369 0.269204 4.34027 0.464466 4.53553C0.659728 4.7308 0.976311 4.7308 1.17157 4.53553L4 1.70711L6.82843 4.53553C7.02369 4.7308 7.34027 4.7308 7.53553 4.53553C7.7308 4.34027 7.7308 4.02369 7.53553 3.82843L4.35355 0.646447ZM4.5 14L4.5 1H3.5L3.5 14H4.5Z" />
                         </svg>
                     </button>
 
-                    <button class="move-down-btn" title="Move Down" onclick="onMoveLine(25)">
+                    <button class="move-down-btn" title="Move Down" onclick="onMoveLine(15)">
                         <svg width="8" height="14" viewBox="0 0 8 14">
                             <path id="DownArrow"
                                 d="M3.64645 13.3536C3.84171 13.5488 4.15829 13.5488 4.35355 13.3536L7.53553 10.1716C7.7308 9.97631 7.7308 9.65973 7.53553 9.46447C7.34027 9.2692 7.02369 9.2692 6.82843 9.46447L4 12.2929L1.17157 9.46447C0.976311 9.2692 0.659728 9.2692 0.464466 9.46447C0.269204 9.65973 0.269204 9.97631 0.464466 10.1716L3.64645 13.3536ZM3.5 0L3.5 13H4.5L4.5 0L3.5 0Z" />
@@ -145,21 +145,21 @@
                         </svg>
                     </span>
 
-                    <button class="align-left-btn" title="Align left" onclick="onAlignChange('left', this)">
+                    <button class="align-left-btn" title="Align left" onclick="onChangeTextAlign('left', this)">
                         <svg width="14" height="13" viewBox="0 0 14 13">
                             <path id="AlignLeft" fill-rule="evenodd" clip-rule="evenodd"
                                 d="M0.5 1H13.5C13.775 1 14 0.776 14 0.5C14 0.224 13.775 0 13.5 0H0.5C0.224 0 0 0.224 0 0.5C0 0.776 0.224 1 0.5 1ZM9.5 4H0.5C0.224 4 0 4.223 0 4.5C0 4.776 0.224 5 0.5 5H9.5C9.775 5 10 4.776 10 4.5C10 4.224 9.775 4 9.5 4ZM0.5 7.999H13.5C13.775 7.999 14 8.223 14 8.499C14 8.775 13.775 8.999 13.5 8.999H0.5C0.224 8.999 0 8.775 0 8.499C0 8.223 0.224 7.999 0.5 7.999ZM8 12H0.5C0.224 12 0 12.224 0 12.5C0 12.776 0.224 13 0.5 13H8C8.275 13 8.5 12.776 8.5 12.5C8.5 12.224 8.275 12 8 12Z" />
                         </svg>
                     </button>
 
-                    <button class="align-center-btn" title="Align center" onclick="onAlignChange('center', this)">
+                    <button class="align-center-btn chosen" title="Align center" onclick="onChangeTextAlign('center', this)">
                         <svg width="15" height="13" viewBox="0 0 15 13">
                             <path id="AlignCenter" fill-rule="evenodd" clip-rule="evenodd"
                                 d="M0.504 1H13.621C13.9 1 14.126 0.776 14.126 0.5C14.126 0.224 13.9 0 13.621 0H0.504C0.226 0 0 0.224 0 0.5C0 0.776 0.226 1 0.504 1ZM2.017 4.499C2.017 4.775 2.244 4.999 2.522 4.999H11.603C11.881 4.999 12.107 4.775 12.107 4.499C12.107 4.223 11.881 3.999 11.603 3.999H2.522C2.244 3.999 2.017 4.223 2.017 4.499ZM0.504 7.999H13.621C13.9 7.999 14.126 8.223 14.126 8.499C14.126 8.775 13.9 8.999 13.621 8.999H0.504C0.226 8.999 0 8.775 0 8.499C0 8.223 0.226 7.999 0.504 7.999ZM11.098 12H3.531C3.253 12 3.027 12.223 3.027 12.5C3.027 12.776 3.253 13 3.531 13H11.098C11.376 13 11.603 12.776 11.603 12.5C11.603 12.224 11.376 12 11.098 12Z" />
                         </svg>
                     </button>
 
-                    <button class="align-right-btn" title="Align right" onclick="onAlignChange('right', this)">
+                    <button class="align-right-btn" title="Align right" onclick="onChangeTextAlign('right', this)">
                         <svg width="15" height="13" viewBox="0 0 15 13">
                             <path id="AlignRight" fill-rule="evenodd" clip-rule="evenodd"
                                 d="M13.622 0.999023H0.505C0.227 0.999023 0 0.775023 0 0.499023C0 0.223023 0.227 -0.000976562 0.505 -0.000976562H13.622C13.9 -0.000976562 14.127 0.223023 14.127 0.499023C14.127 0.775023 13.9 0.999023 13.622 0.999023ZM4.541 4.99802H13.622C13.9 4.99802 14.127 4.77402 14.127 4.49802C14.127 4.22202 13.9 3.99802 13.622 3.99802H4.541C4.263 3.99802 4.037 4.22202 4.037 4.49802C4.037 4.77402 4.263 4.99802 4.541 4.99802ZM0.505 8.99902H13.622C13.9 8.99902 14.127 8.77502 14.127 8.49902C14.127 8.22302 13.9 7.99902 13.622 7.99902H0.505C0.227 7.99902 0 8.22302 0 8.49902C0 8.77502 0.227 8.99902 0.505 8.99902ZM13.622 11.999H6.055C5.775 11.999 5.55 12.222 5.55 12.499C5.55 12.775 5.776 12.999 6.055 12.999H13.622C13.9 12.999 14.127 12.775 14.127 12.499C14.127 12.223 13.9 11.999 13.622 11.999Z" />
@@ -191,7 +191,7 @@
                 </div>
 
                 <input type="text" name="text-input" class="text-input" placeholder="Enter text"
-                    oninput="onLineInput(this.value)" />
+                    oninput="onChangeLineText(this.value)" />
             </div>
 
         </section>

@@ -3,6 +3,10 @@
     border-bottom: 1px solid var(--border-clr);
 }
 
+.main-header .memegen-logo {
+    cursor: pointer;
+}
+
 .main-header-nav {
     margin: 0 auto;
 }

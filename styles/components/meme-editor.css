@@ -28,6 +28,10 @@
     transition: all .2s;
 }
 
+.main-meme-editor button.chosen svg {
+    fill: var(--theme-clr);
+}
+
 .main-meme-editor button:hover svg {
     fill: var(--theme-clr);
 }
