@@ -25,3 +25,8 @@
     padding: 0;
     list-style-type: none;
 }
+
+.clean-link {
+    text-decoration: none;
+    color: var(--txt-clr);
+}

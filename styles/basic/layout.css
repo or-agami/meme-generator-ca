@@ -1,12 +1,5 @@
-.main-layout {
-    /* max-width: 980px; */
-    margin: 0 auto;
-    gap: 48px;
+.meme-layout {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(191px, 1fr));
 }
-
-.card-layout {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-

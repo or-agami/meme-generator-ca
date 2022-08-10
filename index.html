@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/logo/memegen-tab-logo.png">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Meme Generator</title>
+</head>
+
+<body>
+
+    <section class="main-header">
+        <header class="main-header-nav flex align-center space-between">
+            <img class="memegen-logo" src="assets/logo/memegen-logo.png" alt="Meme-gen">
+            <ul class="main-nav clean-list flex">
+                <li class=""><a class="flex align-center justify-center clean-link" href="#">Memes</a></li>
+                <li class=""><a class="flex align-center justify-center clean-link" href="#">Gallery</a></li>
+                <li class=""><a class="flex align-center justify-center clean-link" href="#">About</a></li>
+            </ul>
+            <div onclick="toggleNav(this)" class="open-nav-btn" hidden>
+                <svg width="40" height="40" viewBox="0 0 40 40">
+                    <g id="Group 1">
+                        <rect id="line1" y="8" width="65" height="4" />
+                        <rect id="line2" y="18" width="65" height="4" />
+                        <!-- <rect id="line2" y="11" width="50" height="4" /> -->
+                        <rect id="line3" y="28" width="65" height="4" />
+                    </g>
+                </svg>
+            </div>
+        </header>
+    </section>
+
+    <main class="meme-gallery">
+
+        <section class="filter-section">
+            <input data-trans="filter-search" type="text" class="search-input"
+                oninput="onSetFilterBy({searchByTitle: this.value})" placeholder="Search by title" />
+        </section>
+
+        <section class="main-meme-gallery meme-layout">
+
+            <section onclick="onChooseMeme('1')" class="meme-card">
+                <img src="assets/img/1.jpg" alt="" class="meme-image">
+            </section>
+
+        </section>
+
+    </main>
+<script src="js/controllers/meme.controller.js"></script>
+</body>
+
+</html>

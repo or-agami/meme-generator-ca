@@ -1,6 +1,5 @@
 .main-header {
-    color: white;
-    background-color: var(--clr1);
+    background-color: white;
     box-shadow: 0 8px 0 0 var(--shadow-clr);
     margin-bottom: 40px;
 }
@@ -18,11 +17,13 @@
 }
 
 .main-header .main-nav a {
-    min-height: 72px;
-    width: 80px;
-    text-decoration: none;
-    color: white;
+    min-height: 50px;
+    margin-inline-end: 50px;
     transition: color .2s, box-shadow .3s ease-out;
+}
+
+.main-header .main-nav li:last-child a {
+    margin-inline-end: 20px;
 }
 
 .main-header .main-nav a:hover {

@@ -9,10 +9,7 @@
 
 /* COMPONENTS */
 @import 'components/main-header.css';
-@import 'components/main-logo.css';
-@import 'components/card.css';
-@import 'components/page-nav.css';
-@import 'components/footer.css';
+/* @import 'components/footer.css'; */
 
 /* Media Queries */
 @import 'mq/mq.css';
