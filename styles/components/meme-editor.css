@@ -9,6 +9,10 @@
     left: 25px;
 }
 
+.main-meme-editor .canvas {
+    border-radius: 16px;
+}
+
 /* .main-meme-editor .meme-editor button { */
 .main-meme-editor button {
     cursor: pointer;

@@ -33,7 +33,7 @@
         </header>
     </section>
 
-    <main class="main-meme-gallery main-layout" hidden>
+    <main class="main-meme-gallery main-layout">
 
         <section class="filter-section">
             <input data-trans="filter-search" type="text" class="search-input"
@@ -50,7 +50,7 @@
 
     </main>
 
-    <main class="main-meme-editor main-layout">
+    <main class="main-meme-editor main-layout" hidden>
 
         <button class="back-btn" onclick="onGoToGallery()">
             <svg width="8" height="13" viewBox="0 0 8 13">
@@ -60,9 +60,7 @@
         </button>
 
         <section class="canvas-section flex align-center justify-center">
-
-            <canvas class="canvas" width="400" height="400"></canvas>
-
+            <canvas class="canvas" id="canvas" width="400" height="400"></canvas>
         </section>
 
         <section class="meme-editor editor-layout">
