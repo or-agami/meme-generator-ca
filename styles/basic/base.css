@@ -7,8 +7,9 @@ html {
 }
 
 body {
-    background-color: var(--bg-clr);
+    /* background-color: var(--bg-clr2); */
     margin: 0;
+    min-height: 100vh;
 }
 
 a:hover {

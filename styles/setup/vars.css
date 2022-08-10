@@ -1,7 +1,10 @@
 :root {
-    --theme-color: #FF9826;
+    --theme-clr: #FF9826;
     --txt-clr: #989898;
-    --bg-clr: #E5E5E5;
+    --icon-clr: #727272;
+    --bg-clr1: #FFFFFF;
+    --bg-clr2: #E5E5E5;
+    --bg-clr3: #F8F8F8;
     --border-clr: #DBDBDB;
 
     --s: 620px;
