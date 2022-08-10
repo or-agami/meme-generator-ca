@@ -13,6 +13,13 @@
 
 .main-meme-editor .back-btn span {
     margin-left: 5px;
+    font-family: roboto-medium, 'Segoe UI';
+    color: var(--txt-clr);
+    transition: color .2s;
+}
+
+.main-meme-editor .back-btn:hover span {
+    color: var(--theme-clr);
 }
 
 .main-meme-editor .canvas {
@@ -45,6 +52,33 @@
     background-color: var(--bg-clr3);
 }
 
+.main-meme-editor .main-lines-control {
+    margin: 30px;
+}
+
+.main-meme-editor .main-lines-control button {
+    margin-inline-start: 20px;
+}
+
+.line-control {
+    width: 90%;
+    margin: 0 auto;
+    background-color: var(--bg-clr1);
+    padding: 14px;
+    padding-top: 0;
+    border: 1px solid var(--border-clr);
+    border-radius: 16px;
+}
+
+.line-control .line-btns {
+    border-bottom: 1px solid var(--border-clr);
+    padding: 10px;
+}
+
+.line-control .text-input {
+    padding: 16px;
+    border: none;
+}
 
 .line-control .color-input {
     position: relative;
