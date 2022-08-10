@@ -10,8 +10,8 @@
 .meme-layout {
     display: grid;
     gap: 5px;
-    /* grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); */
-    /* grid-template-rows: repeat(auto-fill, minmax(400px, 1fr)); */
+    /* padding-top: 30px; */
+    justify-content: center;
     grid-template-columns: repeat(auto-fill, 400px);
     grid-template-rows: repeat(auto-fill, 400px);
 }

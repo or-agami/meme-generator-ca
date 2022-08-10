@@ -4,16 +4,21 @@
 }
 
 .main-meme-editor .back-btn {
+    display: flex;
+    align-items: center;
     position: absolute;
     top: 25px;
     left: 25px;
+}
+
+.main-meme-editor .back-btn span {
+    margin-left: 5px;
 }
 
 .main-meme-editor .canvas {
     border-radius: 16px;
 }
 
-/* .main-meme-editor .meme-editor button { */
 .main-meme-editor button {
     cursor: pointer;
     border: none;

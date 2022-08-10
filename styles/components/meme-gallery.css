@@ -2,8 +2,13 @@
     background-color: var(--bg-clr2);
 }
 
-.main-meme-gallery .filter-search {
-    width: 100%;
+.main-meme-gallery .filter-section {
+    margin: 30px auto;
+    width: 90%;
+}
+
+.filter-section .search-input {
+    border-radius: 60px;
 }
 
 .meme-gallery img {
