@@ -10,7 +10,7 @@
     <title>Meme Generator</title>
 </head>
 
-<body>
+<body onload="onInit()">
 
     <section class="main-header">
         <header class="main-header-nav flex align-center space-between">
@@ -33,14 +33,14 @@
         </header>
     </section>
 
-    <main class="meme-gallery">
+    <main class="main-meme-gallery main-layout">
 
         <section class="filter-section">
             <input data-trans="filter-search" type="text" class="search-input"
                 oninput="onSetFilterBy({searchByTitle: this.value})" placeholder="Search by title" />
         </section>
 
-        <section class="main-meme-gallery meme-layout">
+        <section class="meme-gallery meme-layout">
 
             <section onclick="onChooseMeme('1')" class="meme-card">
                 <img src="assets/img/1.jpg" alt="" class="meme-image">
@@ -49,7 +49,29 @@
         </section>
 
     </main>
-<script src="js/controllers/meme.controller.js"></script>
+
+    <main class="main-meme-editor" hidden>
+
+        <!-- <section class="filter-section"> -->
+            <!-- <input data-trans="filter-search" type="text" class="search-input" -->
+                <!-- oninput="onSetFilterBy({searchByTitle: this.value})" placeholder="Search by title" /> -->
+        <!-- </section> -->
+
+        <!-- <section class="meme-editor meme-layout"> -->
+
+            <!-- <section onclick="onChooseMeme('1')" class="meme-card"> -->
+                <!-- <img src="assets/img/1.jpg" alt="" class="meme-image"> -->
+            <!-- </section> -->
+
+        <!-- </section> -->
+
+    </main>
+
+
+<script src="js/services/meme.gallery.service.js"></script>
+<script src="js/controllers/meme.gallery.controller.js"></script>
+<script src="js/services/meme.editor.service.js"></script>
+<script src="js/controllers/meme.editor.controller.js"></script>
 </body>
 
 </html>
