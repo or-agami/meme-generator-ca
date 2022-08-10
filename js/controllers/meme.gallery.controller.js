@@ -17,11 +17,6 @@ function renderMemes() {
     elMemeGallery.innerHTML = strHTMLs.join('')
 }
 
-// function onChooseMeme(memeId) {
-//     const imgUrl = getMemeUrl(memeId)
-//     goToEditor(imgUrl)
-// }
-
 function onImgSelect(memeId) {
     const elGalleryWindow = document.querySelector('.main-meme-gallery')
     elGalleryWindow.hidden = true

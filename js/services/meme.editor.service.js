@@ -44,15 +44,6 @@ function removeLine() {
 function addDefaultLines() {
     let defaultLines = [{ txt: 'Top Text', posX: gCanvasSize.width / 2, posY: 50 }, { txt: 'Bottom Text', posX: gCanvasSize.width / 2, posY: gCanvasSize.height - 50 }]
     defaultLines.forEach((line) => {
-        // let currLine = {
-        //     txt: line.txt,
-        //     size: 50,
-        //     align: 'center',
-        //     color: 'white',
-        //     sColor: 'black',
-        //     pos: { x: line.posX, y: line.posY }
-        // }
-        // gMemeImg.lines.push(currLine)
         addLine(line.txt, { x: line.posX, y: line.posY })
     })
 }

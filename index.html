@@ -16,9 +16,9 @@
         <header class="main-header-nav flex align-center space-between">
             <img class="memegen-logo" onclick="onGoToGallery()" src="assets/logo/memegen-logo.png" alt="Meme-gen">
             <ul class="main-nav clean-list flex">
-                <li class=""><a class="flex align-center justify-center clean-link" href="#">Memes</a></li>
-                <li class=""><a class="flex align-center justify-center clean-link" href="#">Gallery</a></li>
-                <li class=""><a class="flex align-center justify-center clean-link" href="#">About</a></li>
+                <li onclick="onGoToGallery()"><a class="flex align-center justify-center clean-link" href="#">Gallery</a></li>
+                <li onclick="onGoToSaved()"><a class="flex align-center justify-center clean-link" href="#">Memes</a></li>
+                <li onclick="onGoToAbout()"><a class="flex align-center justify-center clean-link" href="#">About</a></li>
             </ul>
             <div onclick="toggleNav(this)" class="open-nav-btn" hidden>
                 <svg width="40" height="40" viewBox="0 0 40 40">

@@ -14,7 +14,7 @@
 .main-header .main-nav a {
     min-height: 50px;
     margin-inline-end: 50px;
-    transition: color .2s, box-shadow .3s ease-out;
+    transition: color .2s;
 }
 
 .main-header .main-nav li:last-child a {

@@ -13,15 +13,15 @@ body {
     min-height: 100vh;
 }
 
-a:hover {
-    text-decoration: none;
-}
+/* a:hover { */
+    /* text-decoration: none; */
+/* } */
 
 input {
     border: none;
     border-bottom: 1px solid var(--border-clr);
     background-color: white;
     padding: 1em 1em;
-    max-width: 400px;
+    /* max-width: 400px; */
     width: 100%;
 }
