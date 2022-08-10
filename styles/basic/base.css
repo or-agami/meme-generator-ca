@@ -4,6 +4,7 @@
 
 html {
     color: var(--txt-clr);
+    font-family: roboto-regular, 'Segoe UI';
 }
 
 body {

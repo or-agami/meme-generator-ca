@@ -26,7 +26,7 @@ function getMemesForDisplay() {
     return gMemesImgs
 }
 
-function getMemeUrl(memeId) {
+function getMemeUrlById(memeId) {
     const memeImg = gMemesImgs.find(meme => meme.url.includes(`img/${memeId}.jpg`))
     return memeImg.url
 }

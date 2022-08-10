@@ -1,18 +1,16 @@
+/* Roboto */
 
-/* Eurofurence */
 @font-face {
-    font-family: eurofurence;
-    src: url(/assets/fonts/eurofurence/eurofurence.ttf);
+    font-family: roboto-regular;
+    src: url(/assets/fonts/roboto/Roboto-Regular.ttf);
 }
 
-/* Lato */
 @font-face {
-    font-family: lato;
-    src: url(/assets/fonts/lato/Lato-Regular.ttf);
+    font-family: roboto-light;
+    src: url(/assets/fonts/roboto/Roboto-Light.ttf);
 }
 
-/* Lato Bold */
 @font-face {
-    font-family: lato-bold;
-    src: url(/assets/fonts/lato/Lato-Bold.ttf);
+    font-family: roboto-medium;
+    src: url(/assets/fonts/roboto/Roboto-Medium.ttf);
 }

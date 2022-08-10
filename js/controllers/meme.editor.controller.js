@@ -3,20 +3,36 @@
 const gElCanvas = document.getElementById('canvas')
 const gCtx = gElCanvas.getContext('2d')
 
-function drawImgFromLocal(imgSrc) {
-    var img = new Image()
-    img.src = imgSrc;
+function initEditorController(memeId) {
+    initEditorService(gElCanvas.width, gElCanvas.height)
+    setImgId(memeId)
+    renderMeme()
+}
+
+function renderMeme() {
+    const selectedMeme = getSelectedMeme()
+    const img = new Image()
+    img.src = selectedMeme.selectedImgUrl;
     img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height) //img,x,y,xend,yend
+        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+
+        selectedMeme.lines.forEach((line) => renderMemeLine(line))
     }
 }
 
-function drawImgFromRemote() {
-    var img = new Image()
-    img.src = 'http://steamcdn-a.akamaihd.net/steam/apps/431960/ss_39ed0a9730b67a930acb8ceed221cc968bee7731.1920x1080.jpg?t=1571786836';
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height) //img,x,y,xend,yend
-    }
+function renderMemeLine({ txt, size, pos, align, color, sColor, }) {
+    console.log('size:', size);
+    gCtx.font = `${size}px Impact`;
+    gCtx.textBaseline = 'middle';
+    gCtx.textAlign = align;
+    gCtx.fillStyle = color;
+    gCtx.lineWidth = 6;
+    gCtx.strokeStyle = sColor;
+    gCtx.shadowColor = sColor
+    gCtx.shadowOffsetX = gCtx.shadowOffsetY = 3
+	gCtx.shadowBlur = 7
+    gCtx.strokeText(txt, pos.x, pos.y);
+    gCtx.fillText(txt, pos.x, pos.y);
 }
 
 function downloadCanvas(elLink) {
@@ -28,14 +44,20 @@ function downloadCanvas(elLink) {
 function onGoToGallery() {
     const elEditorWindow = document.querySelector('.main-meme-editor')
     elEditorWindow.hidden = true
-    
+
     console.log('onGoToGallery');
     goToGallery()
 }
 
-function goToEditor(imgUrl) {
+function goToEditor(memeId) {
     const elEditorWindow = document.querySelector('.main-meme-editor')
     elEditorWindow.hidden = false
     console.log('goToEditor');
-    drawImgFromLocal(imgUrl)
+    initEditorController(memeId)
+}
+
+function onAddLine() {
+    console.log('onAddLine');
+    const lineStr = document.querySelector('.main-meme-editor .text-input')
+    addLine(lineStr)
 }

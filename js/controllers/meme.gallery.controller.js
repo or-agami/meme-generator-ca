@@ -9,7 +9,7 @@ function renderMemes() {
     const elMemeGallery = document.querySelector('.meme-gallery')
     const strHTMLs = memesImgs.map(img =>
         `
-          <section onclick="onGoToEditor(${img.id})" class="meme-card">
+          <section onclick="onImgSelect(${img.id})" class="meme-card">
             <img src="assets/img/${img.id}.jpg" alt="${img.keywords[0]}" class="meme-image">
           </section>
         `
@@ -22,16 +22,14 @@ function renderMemes() {
 //     goToEditor(imgUrl)
 // }
 
-function onGoToEditor(memeId) {
-    console.log('onGoToEditor');
+function onImgSelect(memeId) {
     const elGalleryWindow = document.querySelector('.main-meme-gallery')
     elGalleryWindow.hidden = true
-    const imgUrl = getMemeUrl(memeId)
-    goToEditor(imgUrl)
+    goToEditor(memeId)
 }
 
 function goToGallery() {
+    console.log('goToGallery');
     const elGalleryWindow = document.querySelector('.main-meme-gallery')
     elGalleryWindow.hidden = false
-    console.log('goToGallery');
 }
