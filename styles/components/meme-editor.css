@@ -1,6 +1,17 @@
+.main-meme-editor.main-layout.hidden {
+    transform: translateX(150%);
+}
+
 .main-meme-editor {
+    position: absolute;
+    top: 51px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: calc(100vh - 50px);
     display: grid;
     grid-template-columns: 2fr minmax(400px, 1fr);
+    transition: transform .5s;
 }
 
 .main-meme-editor .back-btn {
@@ -48,10 +59,6 @@
     fill: var(--theme-clr);
 }
 
-.main-meme-editor .meme-editor {
-    background-color: var(--bg-clr3);
-}
-
 .main-meme-editor .main-lines-control {
     margin: 30px;
 }
@@ -78,6 +85,10 @@
 .line-control .text-input {
     padding: 16px;
     border: none;
+}
+
+.line-control .text-input:focus {
+    outline: none;
 }
 
 .line-control .color-input {

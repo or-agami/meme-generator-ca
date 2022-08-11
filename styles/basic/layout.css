@@ -1,8 +1,8 @@
 .main-layout {
     position: relative;
     margin: 0 auto;
+    width: 100%;
     max-width: 1300px;
-    min-height: 100vh;
     border-left: 1px solid var(--border-clr);
     border-right: 1px solid var(--border-clr);
 }
@@ -10,10 +10,8 @@
 .meme-layout {
     display: grid;
     gap: 5px;
-    /* padding-top: 30px; */
     justify-content: center;
-    grid-template-columns: repeat(auto-fill, 400px);
-    grid-template-rows: repeat(auto-fill, 400px);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 300px));
 }
 
 .editor-layout {

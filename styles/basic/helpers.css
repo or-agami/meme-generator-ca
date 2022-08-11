@@ -1,4 +1,4 @@
-/* flex helper */
+/* Flex Helpers */
 
 .flex {
     display: flex;
@@ -20,6 +20,9 @@
     justify-content: center;
 }
 
+
+/* List Helpers */
+
 .clean-list {
     margin: 0;
     padding: 0;
@@ -29,4 +32,11 @@
 .clean-link {
     text-decoration: none;
     color: var(--txt-clr);
+}
+
+
+/* Hide Helpers */
+
+.inactive.hidden {
+    display: none;
 }

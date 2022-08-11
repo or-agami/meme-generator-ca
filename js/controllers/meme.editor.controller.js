@@ -49,7 +49,9 @@ function downloadCanvas(elLink) {
 
 function onGoToGallery() {
     const elEditorWindow = document.querySelector('.main-meme-editor')
-    elEditorWindow.hidden = true
+    elEditorWindow.classList.add('hidden')
+    setTimeout(() => elEditorWindow.classList.add('inactive'), 600)
+    // setTimeout(() => elEditorWindow.hidden = true, 600)
 
     console.log('onGoToGallery');
     goToGallery()
@@ -57,7 +59,12 @@ function onGoToGallery() {
 
 function goToEditor(memeId) {
     const elEditorWindow = document.querySelector('.main-meme-editor')
-    elEditorWindow.hidden = false
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // window.scrollTo({ top: 0 });
+    // elEditorWindow.hidden = false
+    elEditorWindow.classList.remove('inactive')
+    setTimeout(() => elEditorWindow.classList.remove('hidden'), 100)
+    // elEditorWindow.classList.remove('hidden')
     initEditorController(memeId)
 }
 
