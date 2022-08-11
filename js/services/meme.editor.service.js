@@ -9,6 +9,7 @@ var gMemeImg = {
 
 function initEditorService() {
     if (gMemeImg.lines.length === 0) addDefaultLines()
+    gMemeImg.selectedLineIdx = 0
 }
 
 function getSelectedMeme() {
@@ -33,6 +34,7 @@ function switchLine() {
 
 function addLine(txt = 'New Line', pos = { x: gCanvasSize.width / 2, y: gCanvasSize.height / 2 }, size = 50, align = 'center', color = 'white', sColor = 'black') {
     gMemeImg.lines.push({ txt, size, align, color, sColor, pos })
+    gMemeImg.selectedLineIdx = gMemeImg.lines.length - 1
 }
 
 function removeLine() {
@@ -55,6 +57,16 @@ function moveLine(distanceY, distanceX = 0) {
     if (gMemeImg.lines[gMemeImg.selectedLineIdx].pos.y > gCanvasSize.height && distanceY > 0) return
     gMemeImg.lines[gMemeImg.selectedLineIdx].pos.x += distanceX
     gMemeImg.lines[gMemeImg.selectedLineIdx].pos.y += distanceY
+}
+
+function updateLinePos() {
+    if (gMemeImg.lines.length === 0) return
+    const posDeviation = (gCanvasSize.width === 400) ? 400 / 350 : 350 / 400
+    gMemeImg.lines.forEach((line) => {
+        line.pos.x = gCanvasSize.width / 2
+        line.pos.y *= posDeviation
+        line.size *= posDeviation
+    })
 }
 
 function changeTextSize(size) {

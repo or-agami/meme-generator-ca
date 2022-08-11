@@ -1,4 +1,4 @@
-.main-meme-editor.main-layout.hidden {
+.main-meme-editor.hidden {
     transform: translateX(150%);
 }
 
@@ -8,9 +8,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    min-height: calc(100vh - 50px);
     display: grid;
-    grid-template-columns: 2fr minmax(400px, 1fr);
+    grid-template-rows: minmax(460px, 1fr) 2fr;
     transition: transform .5s;
 }
 
@@ -18,8 +17,8 @@
     display: flex;
     align-items: center;
     position: absolute;
-    top: 25px;
-    left: 25px;
+    top: 5px;
+    left: 5px;
 }
 
 .main-meme-editor .back-btn span {
@@ -34,7 +33,7 @@
 }
 
 .main-meme-editor .canvas {
-    border-radius: 16px;
+    border-radius: 10px;
 }
 
 .main-meme-editor button {
@@ -60,7 +59,8 @@
 }
 
 .main-meme-editor .main-lines-control {
-    margin: 30px;
+    margin: 30px auto;
+    width: calc(var(--s) + 20px);
 }
 
 .main-meme-editor .main-lines-control button {
@@ -68,23 +68,31 @@
 }
 
 .line-control {
-    width: 90%;
+    width: max-content;
     margin: 0 auto;
     background-color: var(--bg-clr1);
     padding: 14px;
-    padding-top: 0;
     border: 1px solid var(--border-clr);
     border-radius: 16px;
 }
 
-.line-control .line-btns {
-    border-bottom: 1px solid var(--border-clr);
-    padding: 10px;
+
+.line-control .line-emoji {
+    display: grid;
+    padding-top: 10px;
+    justify-items: center;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.line-control .line-emoji>* {
+    font-size: 38px;
 }
 
 .line-control .text-input {
-    padding: 16px;
     border: none;
+    border-bottom: 1px solid var(--border-clr);
+    padding: 16px;
 }
 
 .line-control .text-input:focus {

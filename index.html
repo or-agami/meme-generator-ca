@@ -16,14 +16,30 @@
         <header class="main-header-nav flex align-center space-between">
             <img class="memegen-logo" onclick="onGoToGallery()" src="assets/logo/memegen-logo.png" alt="Meme-gen">
             <ul class="main-nav clean-list flex">
+
                 <li onclick="onGoToGallery()"><a class="flex align-center justify-center clean-link"
                         href="#">Gallery</a></li>
+
+                <li class="flex align-center justify-center">
+                    <svg width="21" height="1" viewBox="0 0 21 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line id="HorizontalSeperator" y1="0.5" x2="21" y2="0.5" stroke="white" />
+                    </svg>
+                </li>
+
                 <li onclick="onGoToSaved()"><a class="flex align-center justify-center clean-link" href="#">Memes</a>
                 </li>
+
+                <li class="flex align-center justify-center">
+                    <svg width="21" height="1" viewBox="0 0 21 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line id="HorizontalSeperator" y1="0.5" x2="21" y2="0.5" stroke="white" />
+                    </svg>
+                </li>
+
                 <li onclick="onGoToAbout()"><a class="flex align-center justify-center clean-link" href="#">About</a>
                 </li>
+
             </ul>
-            <div onclick="toggleNav(this)" class="open-nav-btn" hidden>
+            <div onclick="toggleNav(this)" class="open-nav-btn">
                 <svg width="40" height="40" viewBox="0 0 40 40">
                     <g id="Group 1">
                         <rect id="line1" y="8" width="65" height="4" />
@@ -36,7 +52,7 @@
         </header>
     </section>
 
-    <main class="main-meme-gallery main-layout">
+    <main class="main-meme-gallery">
 
         <section class="filter-section">
             <input data-trans="filter-search" type="text" class="search-input"
@@ -44,14 +60,11 @@
         </section>
 
         <section class="meme-gallery meme-layout">
-                <section onclick="onChooseMeme('1')" class="meme-card">
-                    <img src="assets/img/1.jpg" alt="" class="meme-image">
-                </section>
         </section>
 
     </main>
 
-    <main class="main-meme-editor main-layout inactive hidden" hidden>
+    <main class="main-meme-editor inactive hidden" hidden>
 
         <button class="back-btn" onclick="onGoToGallery()">
             <svg width="8" height="13" viewBox="0 0 8 13">
@@ -195,6 +208,21 @@
 
                 <input type="text" name="text-input" class="text-input" placeholder="Enter text"
                     oninput="onChangeLineText(this.value)" />
+
+                <div class="line-emoji justify-center">
+                    <button onclick="onAddLine('🤣')">🤣</button>
+                    <button onclick="onAddLine('😂')">😂</button>
+                    <button onclick="onAddLine('😅')">😅</button>
+                    <button onclick="onAddLine('😁')">😁</button>
+                    <button onclick="onAddLine('😎')">😎</button>
+                    <button onclick="onAddLine('😐')">😐</button>
+                    <button onclick="onAddLine('🤯')">🤯</button>
+                    <button onclick="onAddLine('🤑')">🤑</button>
+                    <button onclick="onAddLine('🤢')">🤢</button>
+                    <button onclick="onAddLine('🤮')">🤮</button>
+                    <button onclick="onAddLine('😈')">😈</button>
+                    <button onclick="onAddLine('🤡')">🤡</button>
+                </div>
             </div>
 
         </section>
@@ -202,6 +230,7 @@
     </main>
 
 
+    <script src="js/main.js"></script>
     <script src="js/services/meme.gallery.service.js"></script>
     <script src="js/controllers/meme.gallery.controller.js"></script>
     <script src="js/services/meme.editor.service.js"></script>

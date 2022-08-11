@@ -2,7 +2,7 @@
 
 const gElCanvas = document.getElementById('canvas')
 const gCtx = gElCanvas.getContext('2d')
-const gCanvasSize = { width: gElCanvas.width, height: gElCanvas.height }
+var gCanvasSize = { width: gElCanvas.width, height: gElCanvas.height }
 
 function initEditorController(memeId) {
     initEditorService()
@@ -20,6 +20,16 @@ function renderMeme() {
         selectedMeme.lines.forEach((line) => renderMemeLine(line))
     }
     renderInputLineText(getCurrLineTxt())
+}
+
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-section')
+    if (elContainer.offsetWidth > 400 && gElCanvas.width === 400) return
+    if (elContainer.offsetWidth < 401 && gElCanvas.width === 350) return
+    gCanvasSize.width = gElCanvas.width = (elContainer.offsetWidth > 400) ? 400 : 350
+    gCanvasSize.height = gElCanvas.height = (elContainer.offsetWidth > 400) ? 400 : 350
+    updateLinePos()
+    renderMeme()
 }
 
 function renderMemeLine({ txt, size, pos, align, color, sColor, }) {
@@ -51,7 +61,6 @@ function onGoToGallery() {
     const elEditorWindow = document.querySelector('.main-meme-editor')
     elEditorWindow.classList.add('hidden')
     setTimeout(() => elEditorWindow.classList.add('inactive'), 600)
-    // setTimeout(() => elEditorWindow.hidden = true, 600)
 
     console.log('onGoToGallery');
     goToGallery()
@@ -60,11 +69,8 @@ function onGoToGallery() {
 function goToEditor(memeId) {
     const elEditorWindow = document.querySelector('.main-meme-editor')
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // window.scrollTo({ top: 0 });
-    // elEditorWindow.hidden = false
     elEditorWindow.classList.remove('inactive')
     setTimeout(() => elEditorWindow.classList.remove('hidden'), 100)
-    // elEditorWindow.classList.remove('hidden')
     initEditorController(memeId)
 }
 
@@ -73,10 +79,9 @@ function onSwitchLine() {
     renderMeme()
 }
 
-function onAddLine() {
+function onAddLine(txt) {
     console.log('onAddLine');
-    // const lineStr = document.querySelector('.main-meme-editor .text-input').value
-    addLine()
+    addLine(txt)
     renderMeme()
 }
 
@@ -115,6 +120,17 @@ function onChangeStrokeColor(newSColor) {
 }
 
 function onChangeLineText(txt) {
+    console.log('txt:', txt);
     changeLineText(txt)
     renderMeme()
+}
+
+function initListeners() {
+    window.addEventListener('resize', () => {
+        // console.log('window.innerWidth:', window.innerWidth);
+        // console.log('window.innerHeight:', window.innerHeight);
+        resizeCanvas()
+        // const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
+        // renderCanvas()
+    })
 }
