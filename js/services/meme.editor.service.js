@@ -38,6 +38,11 @@ function getSelectedMeme() {
     return gMeme
 }
 
+function getCurrLine() {
+    // console.log(`gMeme.lines[${gMeme.selectedLineIdx}].isInDrag:`, gMeme.lines[gMeme.selectedLineIdx].isInDrag);
+    return gMeme.lines[gMeme.selectedLineIdx]
+}
+
 function getCurrLineTxt() {
     return gMeme.lines[gMeme.selectedLineIdx].txt
 }
@@ -54,8 +59,9 @@ function switchLine() {
     return gMeme.selectedLineIdx
 }
 
-function addLine(txt = 'New Line', pos = { x: gCanvasSize.width / 2, y: gCanvasSize.height / 2 }, size = 50, align = 'center', color = 'white', sColor = 'black') {
-    gMeme.lines.push({ txt, size, align, color, sColor, pos })
+function addLine(txt = 'New Line', pos = { x: gCanvasSize.width / 2, y: gCanvasSize.height / 2 }, size = 50, align = 'center', color = 'white', sColor = 'black', isInDrag = false) {
+    console.log('addLine');
+    gMeme.lines.push({ txt, size, align, color, sColor, pos, isInDrag, width: txt.length * size / 2, height: size })
     gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
@@ -72,13 +78,37 @@ function addDefaultLines() {
     })
 }
 
-function moveLine(distanceY, distanceX = 0) {
+function moveLine(distanceX, distanceY) {
+    console.log(`distanceX: ${distanceX}, distanceY: ${distanceY}`);
     if (gMeme.lines[gMeme.selectedLineIdx].pos.x < 0 && distanceX < 0) return
     if (gMeme.lines[gMeme.selectedLineIdx].pos.y < 0 && distanceY < 0) return
     if (gMeme.lines[gMeme.selectedLineIdx].pos.x > gCanvasSize.width && distanceX > 0) return
     if (gMeme.lines[gMeme.selectedLineIdx].pos.y > gCanvasSize.height && distanceY > 0) return
     gMeme.lines[gMeme.selectedLineIdx].pos.x += distanceX
     gMeme.lines[gMeme.selectedLineIdx].pos.y += distanceY
+}
+
+function isOnLine(downPos) {
+    for (let i = 0; i < gMeme.lines.length; i++) {
+        const line = gMeme.lines[i];
+        const lw = line.width / 2
+        const lh = line.height / 2
+        console.log(`(${downPos.x} >= ${line.pos.x} - ${lw}:`, (downPos.x >= line.pos.x - lw))
+        console.log(`(${downPos.x} <= ${line.pos.x} + ${lw}:`, (downPos.x <= line.pos.x + lw))
+        console.log(`(${downPos.y} >= ${line.pos.y} - ${lh}:`, (downPos.y >= line.pos.y - lh))
+        console.log(`(${downPos.y} <= ${line.pos.y} + ${lh}:`, (downPos.y <= line.pos.y + lh))
+        if (downPos.x >= line.pos.x - lw && downPos.x <= line.pos.x + lw && downPos.y >= line.pos.y - lh && downPos.y <= line.pos.y + lh) {
+            gMeme.selectedLineIdx = i
+            return true
+        }
+    }
+    return false
+}
+
+function updateLineIsInDrag(isInDrag) {
+    gMeme.lines[gMeme.selectedLineIdx].isInDrag = isInDrag
+    console.log('gMeme.lines[0]:', gMeme.lines[0]);
+    console.log(`updateLineIsInDrag, lineIdx: ${gMeme.selectedLineIdx}`, gMeme.lines[gMeme.selectedLineIdx].isInDrag);
 }
 
 function updateLinePos() {

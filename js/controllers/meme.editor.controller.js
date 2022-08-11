@@ -3,6 +3,7 @@
 const gElCanvas = document.getElementById('canvas')
 const gCtx = gElCanvas.getContext('2d')
 var gCanvasSize = { width: gElCanvas.width, height: gElCanvas.height }
+var gDraggedLinePos
 
 function initEditorController(memeId, isNewMeme) {
     initListeners()
@@ -88,8 +89,8 @@ function onRemoveLine() {
     renderMeme()
 }
 
-function onMoveLine(distance) {
-    moveLine(distance)
+function onMoveLine(distanceX, distanceY) {
+    moveLine(distanceX, distanceY)
     renderMeme()
 }
 
@@ -123,7 +124,64 @@ function onChangeLineText(txt) {
     renderMeme()
 }
 
+
+function onCanvasDown(ev) {
+    console.log('onCanvasDown');
+    const pos = getEvPos(ev)
+    if (!isOnLine(pos)) return
+    updateLineIsInDrag(true)
+    gDraggedLinePos = pos
+    // document.body.style.cursor = 'grabbing'
+}
+
+function onCanvasMove(ev) {
+    // console.log('onCanvasMove');
+    const line = getCurrLine();
+    // console.log('line.isInDrag:', line.isInDrag);
+    console.log('line.txt:', line.txt);
+    if (!line.isInDrag) return
+    console.log('!line.isInDrag:', !line.isInDrag);
+    const pos = getEvPos(ev)
+    const dx = pos.x - gDraggedLinePos.x
+    const dy = pos.y - gDraggedLinePos.y
+    console.log('dx:', dx);
+    console.log('dy:', dy);
+    moveLine(dx, dy)
+    gDraggedLinePos = pos
+    renderMeme()
+}
+
+function onCanvasUp() {
+    updateLineIsInDrag(false)
+    // document.body.style.cursor = 'grab'
+}
+
+function getEvPos(ev) {
+    var pos = {
+        x: ev.offsetX,
+        y: ev.offsetY
+    }
+    if (['touchstart', 'touchmove', 'touchend'].includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft,
+            y: ev.pageY - ev.target.offsetTop
+        }
+    }
+    return pos
+}
+
 function initListeners() {
+    // DESKTOP //
+    gElCanvas.addEventListener('mousedown', onCanvasDown)
+    gElCanvas.addEventListener('mousemove', onCanvasMove)
+    gElCanvas.addEventListener('mouseup', onCanvasUp)
+
+    // MOBILE //
+    gElCanvas.addEventListener('touchstart', onCanvasDown)
+    gElCanvas.addEventListener('touchmove', onCanvasMove)
+    gElCanvas.addEventListener('touchend', onCanvasUp)
     window.addEventListener('resize', () => {
         resizeCanvas()
         renderMeme()
