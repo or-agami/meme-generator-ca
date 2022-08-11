@@ -1,6 +1,6 @@
 'use strict'
 
-var gMemeImg = {
+var gMeme = {
     selectedImgId: 5,
     selectedImgUrl: '',
     selectedLineIdx: 0,
@@ -8,38 +8,44 @@ var gMemeImg = {
 }
 
 function initEditorService() {
-    if (gMemeImg.lines.length === 0) addDefaultLines()
-    gMemeImg.selectedLineIdx = 0
+    if (gMeme.lines.length === 0) addDefaultLines()
+    gMeme.selectedLineIdx = 0
+}
+
+function saveMeme(memeImg) {
+	gMeme.img = memeImg
+	gMeme.id = makeId()
+    setSavedMeme(gMeme)
 }
 
 function getSelectedMeme() {
-    return gMemeImg
+    return gMeme
 }
 
 function getCurrLineTxt() {
-    return gMemeImg.lines[gMemeImg.selectedLineIdx].txt
+    return gMeme.lines[gMeme.selectedLineIdx].txt
 }
 
 function setImgId(memeId) {
     const selectedMemeUrl = getMemeUrlById(memeId)
-    gMemeImg.selectedImgId = memeId
-    gMemeImg.selectedImgUrl = selectedMemeUrl
+    gMeme.selectedImgId = memeId
+    gMeme.selectedImgUrl = selectedMemeUrl
 }
 
 function switchLine() {
-    if (gMemeImg.lines.length > gMemeImg.selectedLineIdx + 1) gMemeImg.selectedLineIdx++
-    else gMemeImg.selectedLineIdx = 0
-    return gMemeImg.selectedLineIdx
+    if (gMeme.lines.length > gMeme.selectedLineIdx + 1) gMeme.selectedLineIdx++
+    else gMeme.selectedLineIdx = 0
+    return gMeme.selectedLineIdx
 }
 
 function addLine(txt = 'New Line', pos = { x: gCanvasSize.width / 2, y: gCanvasSize.height / 2 }, size = 50, align = 'center', color = 'white', sColor = 'black') {
-    gMemeImg.lines.push({ txt, size, align, color, sColor, pos })
-    gMemeImg.selectedLineIdx = gMemeImg.lines.length - 1
+    gMeme.lines.push({ txt, size, align, color, sColor, pos })
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
 function removeLine() {
-    const removedLine = gMemeImg.lines.splice(gMemeImg.selectedLineIdx, 1)
-    if (gMemeImg.lines.length === 0) addLine()
+    const removedLine = gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    if (gMeme.lines.length === 0) addLine()
     return removedLine
 }
 
@@ -51,18 +57,18 @@ function addDefaultLines() {
 }
 
 function moveLine(distanceY, distanceX = 0) {
-    if (gMemeImg.lines[gMemeImg.selectedLineIdx].pos.x < 0 && distanceX < 0) return
-    if (gMemeImg.lines[gMemeImg.selectedLineIdx].pos.y < 0 && distanceY < 0) return
-    if (gMemeImg.lines[gMemeImg.selectedLineIdx].pos.x > gCanvasSize.width && distanceX > 0) return
-    if (gMemeImg.lines[gMemeImg.selectedLineIdx].pos.y > gCanvasSize.height && distanceY > 0) return
-    gMemeImg.lines[gMemeImg.selectedLineIdx].pos.x += distanceX
-    gMemeImg.lines[gMemeImg.selectedLineIdx].pos.y += distanceY
+    if (gMeme.lines[gMeme.selectedLineIdx].pos.x < 0 && distanceX < 0) return
+    if (gMeme.lines[gMeme.selectedLineIdx].pos.y < 0 && distanceY < 0) return
+    if (gMeme.lines[gMeme.selectedLineIdx].pos.x > gCanvasSize.width && distanceX > 0) return
+    if (gMeme.lines[gMeme.selectedLineIdx].pos.y > gCanvasSize.height && distanceY > 0) return
+    gMeme.lines[gMeme.selectedLineIdx].pos.x += distanceX
+    gMeme.lines[gMeme.selectedLineIdx].pos.y += distanceY
 }
 
 function updateLinePos() {
-    if (gMemeImg.lines.length === 0) return
+    if (gMeme.lines.length === 0) return
     const posDeviation = (gCanvasSize.width === 400) ? 400 / 350 : 350 / 400
-    gMemeImg.lines.forEach((line) => {
+    gMeme.lines.forEach((line) => {
         line.pos.x = gCanvasSize.width / 2
         line.pos.y *= posDeviation
         line.size *= posDeviation
@@ -70,24 +76,24 @@ function updateLinePos() {
 }
 
 function changeTextSize(size) {
-    if (gMemeImg.lines[gMemeImg.selectedLineIdx].size < 10 && size < 0) return
-    if (gMemeImg.lines[gMemeImg.selectedLineIdx].size > 100 && size > 0) return
-    gMemeImg.lines[gMemeImg.selectedLineIdx].size += size
+    if (gMeme.lines[gMeme.selectedLineIdx].size < 10 && size < 0) return
+    if (gMeme.lines[gMeme.selectedLineIdx].size > 100 && size > 0) return
+    gMeme.lines[gMeme.selectedLineIdx].size += size
 }
 
 function changeTextAlign(alignTo) {
     console.log('alignTo:', alignTo);
-    gMemeImg.lines[gMemeImg.selectedLineIdx].align = alignTo
+    gMeme.lines[gMeme.selectedLineIdx].align = alignTo
 }
 
 function changeTextColor(newColor) {
-    gMemeImg.lines[gMemeImg.selectedLineIdx].color = newColor
+    gMeme.lines[gMeme.selectedLineIdx].color = newColor
 }
 
 function changeStrokeColor(newSColor) {
-    gMemeImg.lines[gMemeImg.selectedLineIdx].sColor = newSColor
+    gMeme.lines[gMeme.selectedLineIdx].sColor = newSColor
 }
 
 function changeLineText(newTxt) {
-    gMemeImg.lines[gMemeImg.selectedLineIdx].txt = newTxt
+    gMeme.lines[gMeme.selectedLineIdx].txt = newTxt
 }

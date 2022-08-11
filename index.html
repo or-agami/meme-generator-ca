@@ -15,7 +15,7 @@
     <section class="main-header">
         <header class="main-header-nav flex align-center space-between">
             <img class="memegen-logo" onclick="onGoToGallery()" src="assets/logo/memegen-logo.png" alt="Meme-gen">
-            <ul class="main-nav clean-list flex">
+            <ul onclick="closeNav()" class="main-nav clean-list flex">
 
                 <li onclick="onGoToGallery()"><a class="flex align-center justify-center clean-link"
                         href="#">Gallery</a></li>
@@ -98,6 +98,18 @@
                         </svg>
                     </button>
 
+                    <button class="save-meme-btn" onclick="onSaveMeme()" title="Save Meme">
+                        <svg width="15" height="15" viewBox="0 0 15 15">
+                            <path id="SaveBtn" fill-rule="evenodd" clip-rule="evenodd"
+                                d="M2 15H13C14.104 15 15 14.105 15 13V5L9 0H2C0.896 0 0 0.896 0 2.001V13C0 14.104 0.896 15 2 15ZM8.45 1L14 5.55V13C14 13.553 13.552 14 13 14H2C1.447 14 1 13.553 1 13V2.001C1 1.449 1.447 1 2 1H8.45ZM5.19751 4.56628H9.92127C10.1733 4.56628 10.3773 4.34028 10.3773 4.06228C10.3773 3.78528 10.1733 3.55828 9.92127 3.55828H5.29751C5.24228 3.55828 5.19751 3.51351 5.19751 3.45828V1.01565H4.18951V3.55828V4.06628C4.18951 4.34242 4.41337 4.56628 4.68951 4.56628H5.19751ZM4.02389 10.0005V13.9732H3.01589V10.0876V9.03025H12.0078V10.0876V13.9732H11.0475V10.0005H4.02389Z" />
+                        </svg>
+                    </button>
+                    <button class="share-meme-btn" onclick="onShareMeme()" title="Share Meme">
+                        <svg width="16" height="16" viewBox="0 0 16 16">
+                            <path id="ShareBtn" fill-rule="evenodd" clip-rule="evenodd"
+                                d="M10.0155 6.17226L8.01936 3.36855L8.02736 11.5246C8.02736 11.7766 7.80136 11.9806 7.52336 11.9806C7.24536 11.9806 7.01936 11.7766 7.01936 11.5246V3.36855L5.02248 6.17226C4.82253 6.36855 4.42249 6.36855 4.22253 6.17226C4.02253 5.96855 4.02249 5.56855 4.22252 5.36467L7.51735 0.962646L10.8194 5.36467C11.0187 5.56855 11.0177 5.96952 10.8194 6.17226C10.621 6.36855 10.2194 6.37098 10.0155 6.17226ZM13.055 16H2.05499C0.950993 16 0.0549927 15.104 0.0549927 14V8.03583C0.0549927 7.03591 1.05498 7.03578 1.05499 8.03578V14C1.05499 14.5 1.55499 15 2.05499 15H13.055C13.555 15 14.055 14.5 14.055 14V8.03569C14.0423 7.03576 15.055 6.93074 15.055 8.03574V14C15.055 15.105 14.159 16 13.055 16Z" />
+                        </svg>
+                    </button>
                     <button class="remove-line-btn" onclick="onRemoveLine()" title="Delete line">
                         <svg width="13" height="16" viewBox="0 0 13 16">
                             <path id="TrashBtn" fill-rule="evenodd" clip-rule="evenodd"
@@ -229,12 +241,21 @@
 
     </main>
 
+    <main class="main-saved-gallery inactive hidden" hidden>
 
+        <section class="saved-gallery meme-layout">
+        </section>
+
+    </main>
+
+    <script src="js/services/utils.service.js"></script>
     <script src="js/main.js"></script>
     <script src="js/services/meme.gallery.service.js"></script>
-    <script src="js/controllers/meme.gallery.controller.js"></script>
     <script src="js/services/meme.editor.service.js"></script>
+    <script src="js/services/meme.saved.service.js"></script>
+    <script src="js/controllers/meme.gallery.controller.js"></script>
     <script src="js/controllers/meme.editor.controller.js"></script>
+    <script src="js/controllers/meme.saved.controller.js"></script>
 </body>
 
 </html>

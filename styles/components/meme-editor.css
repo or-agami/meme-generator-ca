@@ -70,6 +70,7 @@
 .line-control {
     width: max-content;
     margin: 0 auto;
+    margin-bottom: 10px;
     background-color: var(--bg-clr1);
     padding: 14px;
     border: 1px solid var(--border-clr);

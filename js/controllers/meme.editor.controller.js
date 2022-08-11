@@ -5,8 +5,10 @@ const gCtx = gElCanvas.getContext('2d')
 var gCanvasSize = { width: gElCanvas.width, height: gElCanvas.height }
 
 function initEditorController(memeId) {
+    initListeners()
     initEditorService()
     setImgId(memeId)
+    resizeCanvas()
     renderMeme()
 }
 
@@ -29,7 +31,7 @@ function resizeCanvas() {
     gCanvasSize.width = gElCanvas.width = (elContainer.offsetWidth > 400) ? 400 : 350
     gCanvasSize.height = gElCanvas.height = (elContainer.offsetWidth > 400) ? 400 : 350
     updateLinePos()
-    renderMeme()
+    // renderMeme()
 }
 
 function renderMemeLine({ txt, size, pos, align, color, sColor, }) {
@@ -46,24 +48,19 @@ function renderMemeLine({ txt, size, pos, align, color, sColor, }) {
     gCtx.fillText(txt, pos.x, pos.y)
 }
 
+function onDownloadMeme(elLink) {
+    const memeImg = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = memeImg
+}
+
+function onSaveMeme() {
+    const memeImg = gElCanvas.toDataURL('image/jpeg')
+    saveMeme(memeImg)
+}
+
 function renderInputLineText(lineTxt) {
     const elLineInput = document.querySelector('.main-meme-editor .text-input')
     elLineInput.value = lineTxt
-}
-
-function downloadCanvas(elLink) {
-    const data = gElCanvas.toDataURL()
-    elLink.href = data
-    elLink.download = 'my-image.jpg'
-}
-
-function onGoToGallery() {
-    const elEditorWindow = document.querySelector('.main-meme-editor')
-    elEditorWindow.classList.add('hidden')
-    setTimeout(() => elEditorWindow.classList.add('inactive'), 600)
-
-    console.log('onGoToGallery');
-    goToGallery()
 }
 
 function goToEditor(memeId) {
@@ -127,10 +124,7 @@ function onChangeLineText(txt) {
 
 function initListeners() {
     window.addEventListener('resize', () => {
-        // console.log('window.innerWidth:', window.innerWidth);
-        // console.log('window.innerHeight:', window.innerHeight);
         resizeCanvas()
-        // const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
-        // renderCanvas()
+        renderMeme()
     })
 }
