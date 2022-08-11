@@ -56,6 +56,7 @@ function onDownloadMeme(elLink) {
 function onSaveMeme() {
     const memeImg = gElCanvas.toDataURL('image/jpeg')
     saveMeme(memeImg)
+    onGoToSaved()
 }
 
 function renderInputLineText(lineTxt) {

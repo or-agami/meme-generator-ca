@@ -5,8 +5,15 @@
 .main-saved-gallery {
     position: absolute;
     top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: var(--bg-clr2);
     transition: transform .5s;
+}
+
+.saved-gallery {
+    margin: 0 auto;
 }
 
 .saved-gallery img {
