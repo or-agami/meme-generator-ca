@@ -4,9 +4,9 @@ const gElCanvas = document.getElementById('canvas')
 const gCtx = gElCanvas.getContext('2d')
 var gCanvasSize = { width: gElCanvas.width, height: gElCanvas.height }
 
-function initEditorController(memeId) {
+function initEditorController(memeId, isNewMeme) {
     initListeners()
-    initEditorService()
+    initEditorService(isNewMeme)
     setImgId(memeId)
     resizeCanvas()
     renderMeme()
@@ -63,12 +63,12 @@ function renderInputLineText(lineTxt) {
     elLineInput.value = lineTxt
 }
 
-function goToEditor(memeId) {
+function goToEditor(memeId, isNewMeme = true) {
     const elEditorWindow = document.querySelector('.main-meme-editor')
     window.scrollTo({ top: 0, behavior: 'smooth' });
     elEditorWindow.classList.remove('inactive')
     setTimeout(() => elEditorWindow.classList.remove('hidden'), 100)
-    initEditorController(memeId)
+    initEditorController(memeId, isNewMeme)
 }
 
 function onSwitchLine() {

@@ -1,5 +1,10 @@
 'use strict'
 
+function onInit() {
+    InitGalleryController()
+    initSavedService()
+}
+
 function toggleNav(elOpenNavBtn) {
     const elMainNav = document.querySelector('.main-nav')
     elMainNav.setAttribute('onclick', 'closeNav()')

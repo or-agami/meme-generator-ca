@@ -2,6 +2,7 @@
 
 
 function initSavedController() {
+    initSavedService()
     renderSavedMemes()
 }
 
@@ -9,17 +10,18 @@ function renderSavedMemes() {
     const savedMemes = getSavedMemesForDisplay()
     const elMemeGallery = document.querySelector('.saved-gallery')
     const strHTMLs = savedMemes.map(meme =>
-        `<img onclick="onMemeSelect(${meme.selectedImgId})" class="meme-card" src="assets/img/${meme.selectedImgId}.jpg" class="meme-image">`
+        `<img onclick="onMemeSelect('${meme.selectedImgId}', '${meme.id}')" class="meme-card" src="${meme.imgSrc}" class="meme-image">`
     )
     elMemeGallery.innerHTML = strHTMLs.join('')
 }
 
 
-function onMemeSelect(memeId) {
+function onMemeSelect(memeImgId, memeId) {
     const elGalleryWindow = document.querySelector('.main-saved-gallery')
     elGalleryWindow.classList.add('hidden')
     setTimeout(() => elGalleryWindow.classList.add('inactive'), 600)
-    goToEditor(memeId)
+    loadSavedMeme(memeId)
+    goToEditor(memeImgId, false)
 }
 
 function goToSaved() {
@@ -27,4 +29,5 @@ function goToSaved() {
     const elGalleryWindow = document.querySelector('.main-saved-gallery')
     elGalleryWindow.classList.remove('inactive')
     setTimeout(() => elGalleryWindow.classList.remove('hidden'), 100)
+    initSavedController()
 }

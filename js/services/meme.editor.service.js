@@ -1,21 +1,37 @@
 'use strict'
 
-var gMeme = {
-    selectedImgId: 5,
-    selectedImgUrl: '',
-    selectedLineIdx: 0,
-    lines: []
-}
+// var gMeme = {
+//     selectedImgId: 5,
+//     selectedImgUrl: '',
+//     selectedLineIdx: 0,
+//     lines: []
+// }
+var gMeme = {}
 
-function initEditorService() {
+function initEditorService(isNewMeme) {
+    console.log('initEditorService');
+    if (isNewMeme) {
+        gMeme = {
+            selectedImgId: 5,
+            selectedImgUrl: '',
+            selectedLineIdx: 0,
+            lines: []
+        }
+    } else {
+        gMeme = getMemeToEdit()
+    }
     if (gMeme.lines.length === 0) addDefaultLines()
     gMeme.selectedLineIdx = 0
 }
 
 function saveMeme(memeImg) {
-	gMeme.img = memeImg
-	gMeme.id = makeId()
+    gMeme.imgSrc = memeImg
     setSavedMeme(gMeme)
+}
+
+function editSavedMeme(meme) {
+    console.log('editSavedMeme');
+    gMeme = meme
 }
 
 function getSelectedMeme() {
