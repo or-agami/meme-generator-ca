@@ -3,7 +3,7 @@
 const gElCanvas = document.getElementById('canvas')
 const gCtx = gElCanvas.getContext('2d')
 var gCanvasSize = { width: gElCanvas.width, height: gElCanvas.height }
-var gDraggedLinePos
+var gDraggedLinePos, gAspectRatio
 
 function initEditorController(memeId, isNewMeme) {
     initListeners()
@@ -18,8 +18,6 @@ function renderMeme() {
     const img = new Image()
     img.src = selectedMeme.selectedImgUrl;
     img.onload = () => {
-        // const aspRat = img.height * gElCanvas.width / img.width
-        // gCanvasSize.height = gElCanvas.height = aspRat
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
         selectedMeme.lines.forEach((line) => renderMemeLine(line))
@@ -67,11 +65,19 @@ function renderInputLineText(lineTxt) {
 }
 
 function goToEditor(memeId, isNewMeme = true) {
-    const elEditorWindow = document.querySelector('.main-meme-editor')
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    elEditorWindow.classList.remove('inactive')
-    setTimeout(() => elEditorWindow.classList.remove('hidden'), 100)
-    initEditorController(memeId, isNewMeme)
+    const img = new Image()
+    img.src = getImgUrlById(memeId);
+    img.onload = () => {
+        console.log('img.height:', img.height);
+        gAspectRatio = img.height / img.width
+        gCanvasSize.height = gElCanvas.height = gAspectRatio * gElCanvas.width
+        console.log('gAspectRatio:', gAspectRatio);
+        const elEditorWindow = document.querySelector('.main-meme-editor')
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        elEditorWindow.classList.remove('inactive')
+        setTimeout(() => elEditorWindow.classList.remove('hidden'), 100)
+        initEditorController(memeId, isNewMeme)
+    }
 }
 
 function onSwitchLine() {

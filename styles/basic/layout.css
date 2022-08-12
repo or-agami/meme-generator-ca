@@ -24,6 +24,35 @@
     justify-content: center;
     justify-items: center;
     grid-template-columns: repeat(auto-fit, minmax(140px, 200px));
+    /* grid-auto-flow: row dense; */
+}
+
+.meme-layout img.xxxxxs {
+    grid-row: span 1;
+}
+
+.meme-layout img.xxxxs {
+    grid-row: span 2;
+}
+
+.meme-layout img.xxxs {
+    grid-row: span 3;
+}
+
+.meme-layout img.xxs {
+    grid-row: span 4;
+}
+
+.meme-layout img.xs {
+    grid-row: span 5;
+}
+
+.meme-layout img.s {
+    grid-row: span 6;
+}
+
+.meme-layout img.m {
+    grid-row: span 7;
 }
 
 .editor-layout {

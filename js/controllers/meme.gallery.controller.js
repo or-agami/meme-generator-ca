@@ -8,7 +8,7 @@ function renderMemes() {
     const memesImgs = getImgForDisplay()
     const elMemeGallery = document.querySelector('.meme-gallery')
     const strHTMLs = memesImgs.map(img =>
-        `<img onclick="onImgSelect(${img.id})" class="meme-card" src="assets/img/${img.id}.jpg" alt="${img.keywords[0]}" class="meme-image">`
+        `<img onclick="onImgSelect(${img.id})" class="meme-card ${img.size}" src="assets/img/${img.id}.jpg" alt="${img.keywords[0]}" class="meme-image">`
     )
     elMemeGallery.innerHTML = strHTMLs.join('')
 }
