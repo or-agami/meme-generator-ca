@@ -26,7 +26,3 @@ function goToGallery() {
     elGalleryWindow.classList.remove('inactive')
     setTimeout(() => elGalleryWindow.classList.remove('hidden'), 100)
 }
-
-function onImFlexible() {
-    
-}

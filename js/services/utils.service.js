@@ -19,3 +19,27 @@ function makeId(length = 5) {
     }
     return txt
 }
+
+function doUploadImg(imgDataUrl, onSuccess) {
+
+    const formData = new FormData();
+    formData.append('img', imgDataUrl)
+
+    fetch('//ca-upload.com/here/upload.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.text())
+        .then((url) => {
+            onSuccess(url)
+        })
+        .catch((err) => {
+            console.error(err)
+        })
+}
+
+function getRandomInt(min, max) { //The maximum is exclusive and the minimum is inclusive
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+}
