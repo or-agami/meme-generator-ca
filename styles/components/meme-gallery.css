@@ -8,12 +8,23 @@
 }
 
 .main-meme-gallery .filter-section {
+    display: flex;
+    gap: 10px;
     margin: 30px auto;
     width: 90%;
 }
 
 .filter-section .search-input {
     border-radius: 60px;
+}
+
+.filter-section button {
+    border: none;
+    padding: 0 15px;
+    color: var(--bg-clr1);
+    background-color: var(--theme-clr);
+    border-radius: 60px;
+    cursor: pointer;
 }
 
 .filter-section .search-input:focus {
