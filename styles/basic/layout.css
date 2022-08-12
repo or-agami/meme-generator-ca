@@ -24,7 +24,6 @@
     justify-content: center;
     justify-items: center;
     grid-template-columns: repeat(auto-fit, minmax(140px, 200px));
-    /* grid-auto-flow: row dense; */
 }
 
 .meme-layout img.xxxxxs {

@@ -16,3 +16,9 @@
 
 /* Media Queries */
 @import 'mq/mq.css';
+
+
+/* i18n */
+body.he * {
+    direction: rtl
+}

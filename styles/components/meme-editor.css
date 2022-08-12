@@ -22,7 +22,7 @@
 }
 
 .main-meme-editor .back-btn span {
-    margin-left: 5px;
+    margin-inline-start: 5px;
     font-family: roboto-medium, 'Segoe UI';
     color: var(--txt-clr);
     transition: color .2s;

@@ -1,8 +1,15 @@
 'use strict'
 
 function onInit() {
+    initI18nService()
     InitGalleryController()
     initSavedService()
+}
+
+function onSetLang(lang) {
+    document.body.classList = lang
+    setLang(lang)
+    transDocument()
 }
 
 function toggleNav(elOpenNavBtn) {
