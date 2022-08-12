@@ -36,7 +36,6 @@ function resizeCanvas() {
 }
 
 function renderMemeLine({ txt, size, pos, align, color, sColor, }) {
-    console.log('align:', align)
     gCtx.font = `${size}px Impact`
     gCtx.textBaseline = 'middle'
     gCtx.textAlign = align
@@ -79,7 +78,6 @@ function onSwitchLine() {
 }
 
 function onAddLine(txt) {
-    console.log('onAddLine');
     addLine(txt)
     renderMeme()
 }
@@ -119,14 +117,14 @@ function onChangeStrokeColor(newSColor) {
 }
 
 function onChangeLineText(txt) {
-    console.log('txt:', txt);
+    ev.preventDefault()
     changeLineText(txt)
     renderMeme()
 }
 
 
 function onCanvasDown(ev) {
-    console.log('onCanvasDown');
+    ev.preventDefault()
     const pos = getEvPos(ev)
     if (!isOnLine(pos)) return
     updateLineIsInDrag(true)
@@ -135,17 +133,12 @@ function onCanvasDown(ev) {
 }
 
 function onCanvasMove(ev) {
-    // console.log('onCanvasMove');
+    ev.preventDefault()
     const line = getCurrLine();
-    // console.log('line.isInDrag:', line.isInDrag);
-    console.log('line.txt:', line.txt);
     if (!line.isInDrag) return
-    console.log('!line.isInDrag:', !line.isInDrag);
     const pos = getEvPos(ev)
     const dx = pos.x - gDraggedLinePos.x
     const dy = pos.y - gDraggedLinePos.y
-    console.log('dx:', dx);
-    console.log('dy:', dy);
     moveLine(dx, dy)
     gDraggedLinePos = pos
     renderMeme()
@@ -161,13 +154,17 @@ function getEvPos(ev) {
         x: ev.offsetX,
         y: ev.offsetY
     }
+    console.log('mouse pos:', pos);
+    console.log('ev.type:', ev.type);
+    console.log(`['touchstart', 'touchmove', 'touchend'].includes(ev.type):`, ['touchstart', 'touchmove', 'touchend'].includes(ev.type));
     if (['touchstart', 'touchmove', 'touchend'].includes(ev.type)) {
-        ev.preventDefault()
+
         ev = ev.changedTouches[0]
         pos = {
-            x: ev.pageX - ev.target.offsetLeft,
-            y: ev.pageY - ev.target.offsetTop
+            x: ev.pageX - ev.target.offsetLeft - 50,
+            y: ev.pageY - ev.target.offsetTop - 50
         }
+        console.log('touch pos:', pos);
     }
     return pos
 }
