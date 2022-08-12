@@ -18,6 +18,8 @@ function renderMeme() {
     const img = new Image()
     img.src = selectedMeme.selectedImgUrl;
     img.onload = () => {
+        // const aspRat = img.height * gElCanvas.width / img.width
+        // gCanvasSize.height = gElCanvas.height = aspRat
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
         selectedMeme.lines.forEach((line) => renderMemeLine(line))

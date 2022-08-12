@@ -1,11 +1,5 @@
 'use strict'
 
-// var gMeme = {
-//     selectedImgId: 5,
-//     selectedImgUrl: '',
-//     selectedLineIdx: 0,
-//     lines: []
-// }
 var gMeme = {}
 
 function initEditorService(isNewMeme) {
@@ -48,7 +42,7 @@ function getCurrLineTxt() {
 }
 
 function setImgId(memeId) {
-    const selectedMemeUrl = getMemeUrlById(memeId)
+    const selectedMemeUrl = getImgUrlById(memeId)
     gMeme.selectedImgId = memeId
     gMeme.selectedImgUrl = selectedMemeUrl
 }

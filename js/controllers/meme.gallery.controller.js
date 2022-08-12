@@ -5,7 +5,7 @@ function InitGalleryController() {
 }
 
 function renderMemes() {
-    const memesImgs = getMemesForDisplay()
+    const memesImgs = getImgForDisplay()
     const elMemeGallery = document.querySelector('.meme-gallery')
     const strHTMLs = memesImgs.map(img =>
         `<img onclick="onImgSelect(${img.id})" class="meme-card" src="assets/img/${img.id}.jpg" alt="${img.keywords[0]}" class="meme-image">`

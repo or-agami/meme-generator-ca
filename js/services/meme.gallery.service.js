@@ -20,13 +20,15 @@ var gMemesImgs = [
     { id: 16, url: 'assets/img/16.jpg', keywords: ['funny', 'cat'] },
     { id: 17, url: 'assets/img/17.jpg', keywords: ['funny', 'cat'] },
     { id: 18, url: 'assets/img/18.jpg', keywords: ['funny', 'cat'] },
+    { id: 19, url: 'assets/img/19.jpg', keywords: ['funny', 'cat'] },
+    { id: 20, url: 'assets/img/20.jpg', keywords: ['funny', 'cat'] },
 ]
 
-function getMemesForDisplay() {
+function getImgForDisplay() {
     return gMemesImgs
 }
 
-function getMemeUrlById(memeId) {
-    const memeImg = gMemesImgs.find(meme => meme.url.includes(`img/${memeId}.jpg`))
+function getImgUrlById(imgId) {
+    const memeImg = gMemesImgs.find(meme => meme.url.includes(`img/${imgId}.jpg`))
     return memeImg.url
 }
