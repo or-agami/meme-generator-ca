@@ -1,7 +1,6 @@
 'use strict'
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
-// var sizes = { xxxxxs: '0.4', xxxxs: '0.5', xxxs: '0.6', xxs: '0.7', xs: '0.8', s: '0.9', m: '1', l: '1.1', xl: '1.2', xxl: '1.3', xxxl: '1.4'}
 var gMemesImgs = [
     { id: 1, url: 'assets/img/1.jpg', keywords: ['funny', 'cat'], size: 'xs' },
     { id: 2, url: 'assets/img/2.jpg', keywords: ['funny', 'cat'], size: 'xxs' },
