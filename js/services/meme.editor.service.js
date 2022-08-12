@@ -3,7 +3,6 @@
 var gMeme = {}
 
 function initEditorService(isNewMeme) {
-    // console.log('initEditorService');
     if (isNewMeme) {
         gMeme = {
             selectedImgId: 5,
@@ -24,7 +23,6 @@ function saveMeme(memeImg) {
 }
 
 function editSavedMeme(meme) {
-    // console.log('editSavedMeme');
     gMeme = meme
 }
 
@@ -33,7 +31,6 @@ function getSelectedMeme() {
 }
 
 function getCurrLine() {
-    // console.log(`gMeme.lines[${gMeme.selectedLineIdx}].isInDrag:`, gMeme.lines[gMeme.selectedLineIdx].isInDrag);
     return gMeme.lines[gMeme.selectedLineIdx]
 }
 
@@ -72,7 +69,6 @@ function addDefaultLines() {
 }
 
 function moveLine(distanceX, distanceY) {
-    // console.log(`distanceX: ${distanceX}, distanceY: ${distanceY}`);
     if (gMeme.lines[gMeme.selectedLineIdx].pos.x < 0 && distanceX < 0) return
     if (gMeme.lines[gMeme.selectedLineIdx].pos.y < 0 && distanceY < 0) return
     if (gMeme.lines[gMeme.selectedLineIdx].pos.x > gCanvasSize.width && distanceX > 0) return
@@ -86,10 +82,6 @@ function isOnLine(downPos) {
         const line = gMeme.lines[i];
         const lw = line.width / 2
         const lh = line.height / 2
-        // console.log(`(${downPos.x} >= ${line.pos.x} - ${lw}:`, (downPos.x >= line.pos.x - lw))
-        // console.log(`(${downPos.x} <= ${line.pos.x} + ${lw}:`, (downPos.x <= line.pos.x + lw))
-        // console.log(`(${downPos.y} >= ${line.pos.y} - ${lh}:`, (downPos.y >= line.pos.y - lh))
-        // console.log(`(${downPos.y} <= ${line.pos.y} + ${lh}:`, (downPos.y <= line.pos.y + lh))
         if (downPos.x >= line.pos.x - lw && downPos.x <= line.pos.x + lw && downPos.y >= line.pos.y - lh && downPos.y <= line.pos.y + lh) {
             gMeme.selectedLineIdx = i
             return true
@@ -100,8 +92,6 @@ function isOnLine(downPos) {
 
 function updateLineIsInDrag(isInDrag) {
     gMeme.lines[gMeme.selectedLineIdx].isInDrag = isInDrag
-    // console.log('gMeme.lines[0]:', gMeme.lines[0]);
-    // console.log(`updateLineIsInDrag, lineIdx: ${gMeme.selectedLineIdx}`, gMeme.lines[gMeme.selectedLineIdx].isInDrag);
 }
 
 function updateLinePos() {

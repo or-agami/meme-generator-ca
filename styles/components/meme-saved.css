@@ -18,8 +18,6 @@
 
 .saved-gallery img {
     width: 100%;
-    /* height: 100%; */
-    /* object-fit: cover; */
     cursor: pointer;
     border-radius: 1em;
 }

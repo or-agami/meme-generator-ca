@@ -21,7 +21,6 @@ function onImgSelect(memeId) {
 }
 
 function goToGallery() {
-    console.log('goToGallery');
     const elGalleryWindow = document.querySelector('.main-meme-gallery')
     elGalleryWindow.classList.remove('inactive')
     setTimeout(() => elGalleryWindow.classList.remove('hidden'), 100)

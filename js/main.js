@@ -30,7 +30,6 @@ function onGoToGallery() {
     setTimeout(() => elEditorWindow.classList.add('inactive'), 600)
     setTimeout(() => elSavedWindow.classList.add('inactive'), 600)
 
-    console.log('onGoToGallery');
     goToGallery()
 }
 
@@ -42,6 +41,5 @@ function onGoToSaved() {
     setTimeout(() => elEditorWindow.classList.add('inactive'), 600)
     setTimeout(() => elGalleryWindow.classList.add('inactive'), 600)
 
-    console.log('onGoToSaved');
     goToSaved()
 }

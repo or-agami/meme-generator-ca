@@ -63,7 +63,6 @@
         margin-top: 4px;
         margin-inline-end: 10px;
         cursor: pointer;
-        /* overflow: hidden; */
         width: 40px;
         height: 40px;
         height: 30px;
@@ -119,9 +118,7 @@
     .open-nav-btn.is-open #line3 {
         transform: rotate(-49deg);
     }
-
     /* Animation END */
-
 }
 
 
@@ -140,8 +137,6 @@
     .main-meme-editor .line-control {
         width: calc(var(--s) - 100px);
     }
-
-
 }
 
 
@@ -179,8 +174,6 @@
     }
 
 }
-
-
 
 /* LARGE */
 @media (min-width: 1320px) {

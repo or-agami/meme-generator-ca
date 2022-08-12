@@ -19,7 +19,6 @@ function renderMeme() {
     img.src = selectedMeme.selectedImgUrl;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-
         selectedMeme.lines.forEach((line) => renderMemeLine(line))
     }
     renderInputLineText(getCurrLineTxt())
@@ -67,10 +66,8 @@ function goToEditor(memeId, isNewMeme = true) {
     const img = new Image()
     img.src = getImgUrlById(memeId);
     img.onload = () => {
-        console.log('img.height:', img.height);
         gAspectRatio = img.height / img.width
         gCanvasSize.height = gElCanvas.height = gAspectRatio * gElCanvas.width
-        console.log('gAspectRatio:', gAspectRatio);
         const elEditorWindow = document.querySelector('.main-meme-editor')
         window.scrollTo({ top: 0, behavior: 'smooth' });
         elEditorWindow.classList.remove('inactive')
@@ -129,14 +126,12 @@ function onChangeLineText(txt) {
     renderMeme()
 }
 
-
 function onCanvasDown(ev) {
     ev.preventDefault()
     const pos = getEvPos(ev)
     if (!isOnLine(pos)) return
     updateLineIsInDrag(true)
     gDraggedLinePos = pos
-    // document.body.style.cursor = 'grabbing'
 }
 
 function onCanvasMove(ev) {
@@ -153,7 +148,6 @@ function onCanvasMove(ev) {
 
 function onCanvasUp() {
     updateLineIsInDrag(false)
-    // document.body.style.cursor = 'grab'
 }
 
 function getEvPos(ev) {
@@ -161,9 +155,6 @@ function getEvPos(ev) {
         x: ev.offsetX,
         y: ev.offsetY
     }
-    console.log('mouse pos:', pos);
-    console.log('ev.type:', ev.type);
-    console.log(`['touchstart', 'touchmove', 'touchend'].includes(ev.type):`, ['touchstart', 'touchmove', 'touchend'].includes(ev.type));
     if (['touchstart', 'touchmove', 'touchend'].includes(ev.type)) {
 
         ev = ev.changedTouches[0]
@@ -171,7 +162,6 @@ function getEvPos(ev) {
             x: ev.pageX - ev.target.offsetLeft - 50,
             y: ev.pageY - ev.target.offsetTop - 50
         }
-        console.log('touch pos:', pos);
     }
     return pos
 }
