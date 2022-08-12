@@ -30,9 +30,8 @@ function resizeCanvas() {
     if (elContainer.offsetWidth > 400 && gElCanvas.width === 400) return
     if (elContainer.offsetWidth < 401 && gElCanvas.width === 350) return
     gCanvasSize.width = gElCanvas.width = (elContainer.offsetWidth > 400) ? 400 : 350
-    gCanvasSize.height = gElCanvas.height = (elContainer.offsetWidth > 400) ? 400 : 350
+    gCanvasSize.height = gElCanvas.height = gAspectRatio * gElCanvas.width
     updateLinePos()
-    // renderMeme()
 }
 
 function renderMemeLine({ txt, size, pos, align, color, sColor, }) {
