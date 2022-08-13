@@ -142,8 +142,6 @@
 
     .main-meme-editor {
         grid-template-rows: minmax(450px, 1fr) 2fr;
-        /* grid-template-rows: 1fr; */
-        /* min-height: calc(100vh - 50px); */
     }
 
     .main-meme-editor .line-control {
@@ -173,7 +171,6 @@
     }
 
     .main-meme-editor .back-btn {
-        top: 25px;
         left: 25px;
     }
 

@@ -35,7 +35,6 @@
 
 .filter-section .search-result ul {
     padding: 16px;
-    /* border-radius: 16px; */
     border-radius: 16px 0 16px 16px;
     background-color: var(--theme-clr);
 }
