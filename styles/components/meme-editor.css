@@ -77,6 +77,12 @@
     border-radius: 16px;
 }
 
+.line-control .line-btns {
+    direction: ltr;
+    margin: 0 auto;
+    width: 95%;
+}
+
 
 .line-control .line-emoji {
     display: grid;
