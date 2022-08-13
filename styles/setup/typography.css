@@ -2,15 +2,18 @@
 
 @font-face {
     font-family: roboto-regular;
-    src: url(.../assets/fonts/roboto/Roboto-Regular.ttf);
+    /* src: url(/assets/fonts/roboto/Roboto-Regular.ttf); */
+    src: url('../../assets/fonts/roboto/Roboto-Regular.ttf');
+    /* src: local('../src_main/fonts/ElegantIcons.eot'); */
+    /* src: local('../assets/fonts/roboto/Roboto-Regular.ttf'); */
 }
 
 @font-face {
     font-family: roboto-light;
-    src: url(.../assets/fonts/roboto/Roboto-Light.ttf);
+    src: url('../../assets/fonts/roboto/Roboto-Light.ttf');
 }
 
 @font-face {
     font-family: roboto-medium;
-    src: url(.../assets/fonts/roboto/Roboto-Medium.ttf);
+    src: url('../../assets/fonts/roboto/Roboto-Medium.ttf');
 }
