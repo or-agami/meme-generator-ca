@@ -171,7 +171,7 @@ function getEvPos(ev) {
 
         ev = ev.changedTouches[0]
         pos = {
-            x: ev.pageX - ev.target.offsetLeft - 50,
+            x: ev.pageX - ev.target.offsetLeft,
             y: ev.pageY - ev.target.offsetTop - 50
         }
     }

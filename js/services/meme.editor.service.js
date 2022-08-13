@@ -47,7 +47,9 @@ function switchLine() {
 }
 
 function addLine(txt = 'New Line', pos = { x: gCanvasSize.width / 2, y: gCanvasSize.height / 2 }, size = 50, align = 'center', color = 'white', sColor = 'black', isInDrag = false) {
-    gMeme.lines.push({ txt, size, align, color, sColor, pos, isInDrag, width: txt.length * size / 2 - 25, height: size })
+    let whiteSpace = 35
+    if (txt.length <= 2) whiteSpace = - 15
+    gMeme.lines.push({ txt, size, align, color, sColor, pos, isInDrag, width: txt.length * size / 2 - whiteSpace, height: size })
     gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
@@ -80,9 +82,9 @@ function moveLine(distanceX, distanceY) {
 function isOnLine(downPos) {
     for (let i = 0; i < gMeme.lines.length; i++) {
         const line = gMeme.lines[i]
+        const lh = line.height / 2
         const startPosX = (line.align === 'left') ? line.pos.x : (line.align === 'right') ? line.pos.x - line.width : line.pos.x - line.width / 2
         const endPosX = (line.align === 'left') ? line.pos.x + line.width : (line.align === 'right') ? line.pos.x : line.pos.x + line.width / 2
-        const lh = line.height / 2
         if (downPos.x >= startPosX && downPos.x <= endPosX && downPos.y >= line.pos.y - lh && downPos.y <= line.pos.y + lh) {
             gMeme.selectedLineIdx = i
             return true
