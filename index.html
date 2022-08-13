@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="icon" href="assets/logo/memegen-tab-logo.png">
     <link rel="stylesheet" href="styles/styles.css">
     <title>Meme Generator</title>
@@ -40,12 +40,6 @@
                         class="flex align-center justify-center clean-link" href="#">About</a>
                 </li>
 
-                <!-- <li class="flex align-center justify-center"> -->
-                    <!-- <svg width="21" height="1" viewBox="0 0 21 1" fill="none" xmlns="http://www.w3.org/2000/svg"> -->
-                        <!-- <line id="HorizontalSeperator" y1="0.5" x2="21" y2="0.5" stroke="white" /> -->
-                    <!-- </svg> -->
-                <!-- </li> -->
-
             </ul>
             <div onclick="toggleNav(this)" class="open-nav-btn">
                 <svg width="40" height="40" viewBox="0 0 40 40">
@@ -65,10 +59,15 @@
             <option value="en">English</option>
             <option value="he">עברית</option>
         </select>
-        
+
         <section class="filter-section">
-            <input data-placeholdertrans="search-by-keywords" type="text" class="search-input"
-                oninput="onSetFilterBy({searchByTitle: this.value})" placeholder="Search by Keywords" />
+            <!-- <input data-placeholdertrans="search-by-keywords" type="text" class="search-input" -->
+            <!-- oninput="onSetFilterBy(this.value)" placeholder="Search by Keywords" /> -->
+            <form autocomplete="off" class="search-form"><input data-placeholdertrans="search-by-keywords" type="text"
+                    class="search-input" onKeyUp="renderResults(this.value)" oninput="onSetFilterBy(this.value, event)"
+                    placeholder="Search by Keywords" />
+                <div class="search-result" id="result"></div>
+            </form>
         </section>
 
         <section class="meme-gallery meme-layout">
@@ -87,6 +86,14 @@
         </button>
 
         <section class="canvas-section flex align-center justify-center">
+            <!-- <button class="back-btn" onclick="onGoToGallery()"> -->
+                <!-- <svg width="8" height="13" viewBox="0 0 8 13"> -->
+                    <!-- <path id="BackBtn" fill-rule="evenodd" clip-rule="evenodd" -->
+                        <!-- d="M6.88072 0.81325L1.20372 6.01025L6.87972 11.2063C7.06772 11.3942 7.06772 11.6952 6.87972 11.8822C6.69172 12.0693 6.38972 12.0693 6.20272 11.8822L0.215719 6.40025C0.191719 6.38325 0.158719 6.38925 0.137719 6.36825C0.0387193 6.27025 -0.0052807 6.14025 0.000719301 6.01325C-0.0062807 5.88325 0.0377193 5.75225 0.136719 5.65425C0.158719 5.63125 0.192719 5.63725 0.217719 5.62025L6.20372 0.14025C6.39072 -0.04675 6.69272 -0.04675 6.88072 0.14025C7.06772 0.32525 7.06772 0.62725 6.88072 0.81325Z" /> -->
+                <!-- </svg> -->
+                <!-- <span data-texttrans="back-to-gallery">Back to Gallery</span> -->
+            <!-- </button> -->
+
             <canvas class="canvas" id="canvas" width="400" height="400"></canvas>
         </section>
 
@@ -250,7 +257,7 @@
                 </div>
 
                 <input data-placeholdertrans="enter-text" type="text" name="text-input" class="text-input"
-                    placeholder="Enter text" oninput="onChangeLineText(this.value)" />
+                    placeholder="Enter text" oninput="onChangeLineText(this.value, event)" />
 
                 <div class="line-emoji justify-center">
                     <button onclick="onAddLine('🤣')">🤣</button>

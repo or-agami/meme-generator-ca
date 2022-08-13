@@ -16,19 +16,38 @@
     background-color: var(--bg-clr1);
 }
 
-.main-meme-gallery .filter-section {
-    display: flex;
-    gap: 10px;
-    margin: 20px auto;
-    width: 90%;
-}
-
 .filter-section .search-input {
     border-radius: 60px;
 }
 
 .filter-section .search-input:focus {
     outline: 1px solid var(--theme-clr);
+}
+
+.main-meme-gallery .filter-section {
+    margin: 20px auto;
+    width: 90%;
+}
+
+.filter-section .search-result {
+    position: absolute;
+}
+
+.filter-section .search-result ul {
+    padding: 16px;
+    /* border-radius: 16px; */
+    border-radius: 16px 0 16px 16px;
+    background-color: var(--theme-clr);
+}
+
+.filter-section .search-result li {
+    cursor: pointer;
+    color: var(--bg-clr1);
+    transition: color .2s ease-out;
+}
+
+.filter-section .search-result li:hover {
+    color: black;
 }
 
 .meme-gallery img {

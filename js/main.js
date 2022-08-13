@@ -4,6 +4,8 @@ function onInit() {
     initI18nService()
     InitGalleryController()
     initSavedService()
+    const userLang = getLang()
+    if (userLang === 'he') transDocument()
 }
 
 function onSetLang(lang) {

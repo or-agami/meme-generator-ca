@@ -117,11 +117,11 @@ function transDocument() {
   elsText.forEach(el => {
     el.innerText = gTrans[el.dataset.texttrans][gUserLang]
   })
-  const elsPlaceholder = document.querySelectorAll('[data-placeholdertrans')
+  const elsPlaceholder = document.querySelectorAll('[data-placeholdertrans]')
   elsPlaceholder.forEach(el => {
     el.placeholder = gTrans[el.dataset.placeholdertrans][gUserLang]
   })
-  const elsTitle = document.querySelectorAll('[data-titletrans')
+  const elsTitle = document.querySelectorAll('[data-titletrans]')
   elsTitle.forEach(el => {
     el.title = gTrans[el.dataset.titletrans][gUserLang]
   })

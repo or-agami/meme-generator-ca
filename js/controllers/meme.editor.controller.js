@@ -21,7 +21,7 @@ function renderMeme() {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         selectedMeme.lines.forEach((line) => renderMemeLine(line))
     }
-    renderInputLineText(getCurrLineTxt())
+    renderInputLineText(getCurrLine())
 }
 
 function resizeCanvas() {
@@ -38,7 +38,7 @@ function renderMemeLine({ txt, size, pos, align, color, sColor, }) {
     gCtx.textBaseline = 'middle'
     gCtx.textAlign = align
     gCtx.fillStyle = color
-    gCtx.lineWidth = 6
+    gCtx.lineWidth = 5
     gCtx.strokeStyle = gCtx.shadowColor = sColor
     gCtx.shadowOffsetX = gCtx.shadowOffsetY = 3
     gCtx.shadowBlur = 5
@@ -57,9 +57,10 @@ function onSaveMeme() {
     onGoToSaved()
 }
 
-function renderInputLineText(lineTxt) {
+function renderInputLineText(line) {
     const elLineInput = document.querySelector('.main-meme-editor .text-input')
-    elLineInput.value = lineTxt
+    elLineInput.value = line.txt
+    markSelectedAlignBtn(line.align)
 }
 
 function goToEditor(memeId, isNewMeme = true) {
@@ -79,6 +80,15 @@ function goToEditor(memeId, isNewMeme = true) {
 function onSwitchLine() {
     switchLine()
     renderMeme()
+    const currLine = getCurrLine()
+    markSelectedAlignBtn(currLine.align)
+}
+
+function markSelectedAlignBtn(alignTo) {
+    const elButtons = document.querySelectorAll('.main-meme-editor button')
+    const elButton = document.querySelector(`.align-${alignTo}-btn`)
+    elButtons.forEach(button => button.classList.remove('chosen'))
+    elButton.classList.add('chosen')
 }
 
 function onAddLine(txt) {
@@ -97,6 +107,7 @@ function onMoveLine(distanceX, distanceY) {
 }
 
 function onChangeTextSize(size) {
+    
     changeTextSize(size)
     renderMeme()
 }
@@ -120,7 +131,8 @@ function onChangeStrokeColor(newSColor) {
     renderMeme()
 }
 
-function onChangeLineText(txt) {
+function onChangeLineText(txt, ev) {
+    console.log('ev:', ev);
     ev.preventDefault()
     changeLineText(txt)
     renderMeme()
