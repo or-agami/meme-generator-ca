@@ -2,10 +2,7 @@
 
 @font-face {
     font-family: roboto-regular;
-    /* src: url(/assets/fonts/roboto/Roboto-Regular.ttf); */
     src: url('../../assets/fonts/roboto/Roboto-Regular.ttf');
-    /* src: local('../src_main/fonts/ElegantIcons.eot'); */
-    /* src: local('../assets/fonts/roboto/Roboto-Regular.ttf'); */
 }
 
 @font-face {
