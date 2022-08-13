@@ -6,6 +6,10 @@ var gCanvasSize = { width: gElCanvas.width, height: gElCanvas.height }
 var gDraggedLinePos, gAspectRatio
 
 function initEditorController(memeId, isNewMeme) {
+    let impactFont = new FontFace('Impact', 'url(../../assets/fonts/impact/impact.ttf)')
+    impactFont.load().then((font) => {
+        document.fonts.add(font)
+    })
     initListeners()
     initEditorService(isNewMeme)
     setImgId(memeId)
@@ -38,10 +42,9 @@ function renderMemeLine({ txt, size, pos, align, color, sColor, }) {
     gCtx.textBaseline = 'middle'
     gCtx.textAlign = align
     gCtx.fillStyle = color
-    gCtx.lineWidth = 5
+    gCtx.lineWidth = size / 15
     gCtx.strokeStyle = gCtx.shadowColor = sColor
-    gCtx.shadowOffsetX = gCtx.shadowOffsetY = 3
-    gCtx.shadowBlur = 5
+    gCtx.shadowOffsetX = gCtx.shadowOffsetY = 2
     gCtx.strokeText(txt, pos.x, pos.y)
     gCtx.fillText(txt, pos.x, pos.y)
 }
@@ -107,7 +110,7 @@ function onMoveLine(distanceX, distanceY) {
 }
 
 function onChangeTextSize(size) {
-    
+
     changeTextSize(size)
     renderMeme()
 }
@@ -199,7 +202,7 @@ function onShareMeme() {
 
     function onSuccess(uploadedImgUrl) {
         const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`); 
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`);
     }
     doUploadImg(imgDataUrl, onSuccess);
 }
