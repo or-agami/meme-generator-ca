@@ -62,7 +62,7 @@
 
         <section class="filter-section">
             <form autocomplete="off" class="search-form"><input data-placeholdertrans="search-by-keywords" type="text"
-                    class="search-input" onKeyUp="renderResults(this.value)" oninput="onSetFilterBy(this.value, event)"
+                    class="search-input" onKeyUp="renderResults(this.value.toLowerCase())" oninput="onSetFilterBy(this.value, event)"
                     placeholder="Search by Keywords" />
                 <div class="search-result" id="result"></div>
             </form>
