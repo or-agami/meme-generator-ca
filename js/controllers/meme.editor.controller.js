@@ -6,7 +6,7 @@ var gCanvasSize = { width: gElCanvas.width, height: gElCanvas.height }
 var gDraggedLinePos, gAspectRatio
 
 function initEditorController(memeId, isNewMeme) {
-    let impactFont = new FontFace('Impact', 'url(../../assets/fonts/impact/impact.ttf)')
+    let impactFont = new FontFace('Impact', 'url(../assets/fonts/impact/impact.ttf)')
     impactFont.load().then((font) => {
         document.fonts.add(font)
     })
