@@ -23,6 +23,7 @@ function goToEditor(memeId, isNewMeme = true) {
     img.src = getImgUrlById(memeId);
     img.onload = () => {
         gAspectRatio = img.height / img.width
+        if (img.width < 400) gElCanvas.width = img.width
         gCanvasSize.height = gElCanvas.height = gAspectRatio * gElCanvas.width
         const elEditorWindow = document.querySelector('.main-meme-editor')
         window.scrollTo({ top: 0, behavior: 'smooth' });

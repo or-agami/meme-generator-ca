@@ -26,31 +26,31 @@
     grid-template-columns: repeat(auto-fit, minmax(140px, 200px));
 }
 
-.meme-layout img.xxxxxs {
+.meme-layout .meme-image.xxxxxs {
     grid-row: span 1;
 }
 
-.meme-layout img.xxxxs {
+.meme-layout .meme-image.xxxxs {
     grid-row: span 2;
 }
 
-.meme-layout img.xxxs {
+.meme-layout .meme-image.xxxs {
     grid-row: span 3;
 }
 
-.meme-layout img.xxs {
+.meme-layout .meme-image.xxs {
     grid-row: span 4;
 }
 
-.meme-layout img.xs {
+.meme-layout .meme-image.xs {
     grid-row: span 5;
 }
 
-.meme-layout img.s {
+.meme-layout .meme-image.s {
     grid-row: span 6;
 }
 
-.meme-layout img.m {
+.meme-layout .meme-image.m {
     grid-row: span 7;
 }
 

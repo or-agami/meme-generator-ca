@@ -2,6 +2,7 @@
 
 var gKeywordsSearch = []
 var gFilterBy = ''
+var gUploadFromLocalImgUrl = `assets/img/upload.png`
 var gMemesImgs = [
     { id: 1, url: 'assets/img/1.jpg', keywords: ['serious', 'tramp', 'politicians', 'angry', 'רציני', 'טראמפ', 'פוליקאי', 'עצבני'], size: 'xs' },
     { id: 2, url: 'assets/img/2.jpg', keywords: ['together', 'sweet', 'dog', 'cute', 'ביחד', 'חמוד', 'כלב', 'מתוק'], size: 'xxs' },
@@ -37,8 +38,18 @@ function initGalleryService() {
 }
 
 function getImgUrlById(imgId) {
-    const memeImg = gMemesImgs.find(meme => meme.url.includes(`img/${imgId}.jpg`))
+    const memeImg = gMemesImgs.find(meme => meme.id === imgId)
     return memeImg.url
+}
+
+function getUploadFromLocalImgUrl() {
+    return gUploadFromLocalImgUrl
+}
+
+function setImgFromInput(img) {
+    const nextId = gMemesImgs[gMemesImgs.length - 1].id + 1
+    const url = img.src
+    gMemesImgs.push({ id: nextId, url })
 }
 
 function setFilterBy(keyword) {

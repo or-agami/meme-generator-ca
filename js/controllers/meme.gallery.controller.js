@@ -2,7 +2,7 @@
 
 function initGalleryController() {
     initGalleryService()
-    renderMemes()
+    renderImgs()
 }
 
 function goToGallery() {
@@ -11,12 +11,15 @@ function goToGallery() {
     setTimeout(() => elGalleryWindow.classList.remove('hidden'), 100)
 }
 
-function renderMemes() {
+function renderImgs() {
     const memesImgs = getImgForDisplay()
+    const uploadFromLocalImgUrl = getUploadFromLocalImgUrl()
     const elMemeGallery = document.querySelector('.meme-gallery')
     const strHTMLs = memesImgs.map(img =>
-        `<img onclick="onImgSelect(${img.id})" class="meme-card ${img.size}" src="assets/img/${img.id}.jpg" alt="${img.keywords[0]}" class="meme-image">`
+        `<img onclick="onImgSelect(${img.id})" class="meme-image ${img.size}" src="assets/img/${img.id}.jpg" alt="${img.keywords[0]}">`
     )
+    const uploadImgStrHTML = `<img class="meme-image xxxs" onclick="onImgUpload()" src="${uploadFromLocalImgUrl}" alt="Upload From Local">`
+    strHTMLs.unshift(uploadImgStrHTML)
     elMemeGallery.innerHTML = strHTMLs.join('')
 }
 
@@ -35,14 +38,14 @@ function renderResults(val) {
 function onSetFilterBy(keyword, ev) {
     ev.preventDefault()
     setFilterBy(keyword)
-    renderMemes()
+    renderImgs()
 }
 
 function onSelectFilter(keyword) {
     setFilterBy(keyword)
     document.querySelector('.search-input').value = keyword
     document.getElementById("result").innerHTML = ''
-    renderMemes()
+    renderImgs()
 }
 
 function onImgSelect(memeId) {
@@ -50,4 +53,32 @@ function onImgSelect(memeId) {
     elGalleryWindow.classList.add('hidden')
     setTimeout(() => elGalleryWindow.classList.add('inactive'), 600)
     goToEditor(memeId)
+}
+
+function onImgUpload() {
+    const elImgInput = document.createElement('input')
+    elImgInput.type = 'file'
+    elImgInput.setAttribute('onchange', 'onImgInput(event)')
+    document.body.appendChild(elImgInput)
+    elImgInput.click()
+    document.body.removeChild(elImgInput)
+}
+
+function onImgInput(ev) {
+    loadImageFromInput(ev, setImgFromInput)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+
+    const reader = new FileReader()
+    reader.onload = (event) => {
+        const img = new Image()
+        img.src = event.target.result
+        const elGalleryWindow = document.querySelector('.main-meme-gallery')
+        elGalleryWindow.classList.add('hidden')
+        setTimeout(() => elGalleryWindow.classList.add('inactive'), 600)
+        img.onload = onImageReady.bind(null, img)
+        setTimeout(() => goToEditor(26), 100)
+    }
+    reader.readAsDataURL(ev.target.files[0])
 }
