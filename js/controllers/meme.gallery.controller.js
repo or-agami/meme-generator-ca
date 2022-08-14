@@ -1,8 +1,14 @@
 'use strict'
 
-function InitGalleryController() {
+function initGalleryController() {
     initGalleryService()
     renderMemes()
+}
+
+function goToGallery() {
+    const elGalleryWindow = document.querySelector('.main-meme-gallery')
+    elGalleryWindow.classList.remove('inactive')
+    setTimeout(() => elGalleryWindow.classList.remove('hidden'), 100)
 }
 
 function renderMemes() {
@@ -44,10 +50,4 @@ function onImgSelect(memeId) {
     elGalleryWindow.classList.add('hidden')
     setTimeout(() => elGalleryWindow.classList.add('inactive'), 600)
     goToEditor(memeId)
-}
-
-function goToGallery() {
-    const elGalleryWindow = document.querySelector('.main-meme-gallery')
-    elGalleryWindow.classList.remove('inactive')
-    setTimeout(() => elGalleryWindow.classList.remove('hidden'), 100)
 }

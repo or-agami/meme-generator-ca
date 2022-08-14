@@ -2,7 +2,7 @@
 
 function onInit() {
     initI18nService()
-    InitGalleryController()
+    initGalleryController()
     initSavedService()
     const userLang = getLang()
     if (userLang === 'he') transDocument()
@@ -14,41 +14,44 @@ function onSetLang(lang) {
     transDocument()
 }
 
-function toggleNav(elOpenNavBtn) {
-    const elMainNav = document.querySelector('.main-nav')
-    elMainNav.setAttribute('onclick', 'closeNav()')
-    elMainNav.classList.toggle('main-nav-open')
-    elOpenNavBtn.classList.toggle('is-open')
-    document.body.classList.toggle('main-nav-open')
+function onToggleNav() {
+    toggleMainNav(false)
 }
 
-function closeNav() {
-    const elOpenNavBtn = document.querySelector('.open-nav-btn')
-    const elMainNav = document.querySelector('.main-nav')
-    elMainNav.removeAttribute('onclick')
-    elMainNav.classList.remove('main-nav-open')
-    elOpenNavBtn.classList.remove('is-open')
-    document.body.classList.remove('main-nav-open')
+function onCloseNav() {
+    toggleMainNav(true)
 }
 
 function onGoToGallery() {
-    const elEditorWindow = document.querySelector('.main-meme-editor')
-    elEditorWindow.classList.add('hidden')
     const elSavedWindow = document.querySelector('.main-saved-gallery')
     elSavedWindow.classList.add('hidden')
-    setTimeout(() => elEditorWindow.classList.add('inactive'), 600)
     setTimeout(() => elSavedWindow.classList.add('inactive'), 600)
-
+    hideEditorWindow()
     goToGallery()
 }
 
 function onGoToSaved() {
-    const elEditorWindow = document.querySelector('.main-meme-editor')
-    elEditorWindow.classList.add('hidden')
     const elGalleryWindow = document.querySelector('.main-meme-gallery')
     elGalleryWindow.classList.add('hidden')
-    setTimeout(() => elEditorWindow.classList.add('inactive'), 600)
     setTimeout(() => elGalleryWindow.classList.add('inactive'), 600)
-
+    hideEditorWindow()
     goToSaved()
+}
+
+function hideEditorWindow() {
+    const elEditorWindow = document.querySelector('.main-meme-editor')
+    elEditorWindow.classList.add('hidden')
+    setTimeout(() => elEditorWindow.classList.add('inactive'), 600)
+}
+
+function toggleMainNav(navIsOpen) {
+    const elOpenNavBtn = document.querySelector('.open-nav-btn')
+    const elMainNav = document.querySelector('.main-nav')
+
+    if (navIsOpen) elMainNav.removeAttribute('onclick')
+    else elMainNav.setAttribute('onclick', 'onCloseNav()')
+
+    elOpenNavBtn.classList.toggle('is-open')
+    elMainNav.classList.toggle('main-nav-open')
+    document.body.classList.toggle('main-nav-open')
 }

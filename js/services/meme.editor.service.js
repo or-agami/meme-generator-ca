@@ -17,20 +17,11 @@ function initEditorService(isNewMeme) {
     gMeme.selectedLineIdx = 0
 }
 
-function saveMeme(memeImg) {
-    gMeme.imgSrc = memeImg
-    setSavedMeme(gMeme)
-}
-
-function editSavedMeme(meme) {
-    gMeme = meme
-}
-
 function getSelectedMeme() {
     return gMeme
 }
 
-function getCurrLine() {
+function getSelectedLine() {
     return gMeme.lines[gMeme.selectedLineIdx]
 }
 
@@ -45,7 +36,7 @@ function setImgId(memeId) {
 }
 
 function switchLine() {
-    if (gMeme.lines.length > gMeme.selectedLineIdx + 1) gMeme.selectedLineIdx++
+    if (gMeme.selectedLineIdx < gMeme.lines.length - 1) gMeme.selectedLineIdx++
     else gMeme.selectedLineIdx = 0
     return gMeme.selectedLineIdx
 }
@@ -62,10 +53,49 @@ function addLine(txt, pos = { x: gCanvasSize.width / 2, y: gCanvasSize.height / 
     gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
+function saveMeme(memeImg) {
+    gMeme.imgSrc = memeImg
+    setSavedMeme(gMeme)
+}
+
 function removeLine() {
     const removedLine = gMeme.lines.splice(gMeme.selectedLineIdx, 1)
     if (gMeme.lines.length === 0) addLine()
     return removedLine
+}
+
+function moveLine(distanceX, distanceY) {
+    const line = getSelectedLine()
+    if (line.pos.x < 0 && distanceX < 0
+        || line.pos.y < 0 && distanceY < 0
+        || line.pos.x > gCanvasSize.width && distanceX > 0
+        || line.pos.y > gCanvasSize.height && distanceY > 0) return
+    line.pos.x += distanceX
+    line.pos.y += distanceY
+}
+
+function changeTextSize(size) {
+    const line = getSelectedLine()
+    if (line.size < 10 && size < 0 || line.size > 100 && size > 0) return
+    line.size += size
+}
+
+function changeTextAlign(alignTo) {
+    const line = getSelectedLine()
+    line.align = alignTo
+    line.pos.x = (alignTo === 'left') ? 10 : (alignTo === 'right') ? gCanvasSize.width - 10 : gCanvasSize.width / 2
+}
+
+function changeStrokeColor(newSColor) {
+    getSelectedLine().sColor = newSColor
+}
+
+function changeTextColor(newColor) {
+    getSelectedLine().color = newColor
+}
+
+function changeLineText(newTxt) {
+    getSelectedLine().txt = newTxt
 }
 
 function addDefaultLines() {
@@ -77,15 +107,6 @@ function addDefaultLines() {
     defaultLines.forEach((line) => {
         addLine(line.txt, { x: line.posX, y: line.posY })
     })
-}
-
-function moveLine(distanceX, distanceY) {
-    if (gMeme.lines[gMeme.selectedLineIdx].pos.x < 0 && distanceX < 0) return
-    if (gMeme.lines[gMeme.selectedLineIdx].pos.y < 0 && distanceY < 0) return
-    if (gMeme.lines[gMeme.selectedLineIdx].pos.x > gCanvasSize.width && distanceX > 0) return
-    if (gMeme.lines[gMeme.selectedLineIdx].pos.y > gCanvasSize.height && distanceY > 0) return
-    gMeme.lines[gMeme.selectedLineIdx].pos.x += distanceX
-    gMeme.lines[gMeme.selectedLineIdx].pos.y += distanceY
 }
 
 function isOnLine(downPos) {
@@ -103,7 +124,7 @@ function isOnLine(downPos) {
 }
 
 function updateLineIsInDrag(isInDrag) {
-    gMeme.lines[gMeme.selectedLineIdx].isInDrag = isInDrag
+    getSelectedLine().isInDrag = isInDrag
 }
 
 function updateLinePos() {
@@ -114,27 +135,4 @@ function updateLinePos() {
         line.pos.y *= posDeviation
         line.size *= posDeviation
     })
-}
-
-function changeTextSize(size) {
-    if (gMeme.lines[gMeme.selectedLineIdx].size < 10 && size < 0) return
-    if (gMeme.lines[gMeme.selectedLineIdx].size > 100 && size > 0) return
-    gMeme.lines[gMeme.selectedLineIdx].size += size
-}
-
-function changeTextAlign(alignTo) {
-    gMeme.lines[gMeme.selectedLineIdx].align = alignTo
-    gMeme.lines[gMeme.selectedLineIdx].pos.x = (alignTo === 'left') ? 10 : (alignTo === 'right') ? gCanvasSize.width - 10 : gCanvasSize.width / 2
-}
-
-function changeTextColor(newColor) {
-    gMeme.lines[gMeme.selectedLineIdx].color = newColor
-}
-
-function changeStrokeColor(newSColor) {
-    gMeme.lines[gMeme.selectedLineIdx].sColor = newSColor
-}
-
-function changeLineText(newTxt) {
-    gMeme.lines[gMeme.selectedLineIdx].txt = newTxt
 }

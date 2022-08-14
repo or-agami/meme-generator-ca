@@ -26,10 +26,6 @@ function getMemeToEdit() {
     return memeToEdit
 }
 
-function loadSavedMeme(memeId) {
-    memeToEdit = getSavedMemeById(memeId)
-}
-
 function getSavedMemes() {
 
     let memes = _loadMemesFromStorage()
@@ -37,6 +33,10 @@ function getSavedMemes() {
     else gSavedMemes = memes
 
     _saveMemesToStorage()
+}
+
+function loadSavedMeme(memeId) {
+    memeToEdit = getSavedMemeById(memeId)
 }
 
 function setSavedMeme(meme) {

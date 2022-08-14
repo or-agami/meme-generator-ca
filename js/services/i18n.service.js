@@ -103,7 +103,6 @@ function setLang(lang) {
     lang = _loadLangFromStorage()
     if (!lang) lang = 'en'
   }
-  console.log('lang:', lang)
   gUserLang = lang
   _saveLangToStorage()
 }
