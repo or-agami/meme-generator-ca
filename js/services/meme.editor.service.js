@@ -34,6 +34,10 @@ function getCurrLine() {
     return gMeme.lines[gMeme.selectedLineIdx]
 }
 
+function getSelectedLineIdx() {
+    return gMeme.selectedLineIdx
+}
+
 function setImgId(memeId) {
     const selectedMemeUrl = getImgUrlById(memeId)
     gMeme.selectedImgId = memeId
@@ -46,7 +50,12 @@ function switchLine() {
     return gMeme.selectedLineIdx
 }
 
-function addLine(txt = 'New Line', pos = { x: gCanvasSize.width / 2, y: gCanvasSize.height / 2 }, size = 50, align = 'center', color = 'white', sColor = 'black', isInDrag = false) {
+function addLine(txt, pos = { x: gCanvasSize.width / 2, y: gCanvasSize.height / 2 }, size = 50, align = 'center', color = 'white', sColor = 'black', isInDrag = false) {
+    const userLang = getLang()
+    if (txt === undefined) {
+        if (userLang === 'he') txt = 'שורה חדשה'
+        if (userLang === 'en') txt = 'New Line'
+    }
     let whiteSpace = 35
     if (txt.length <= 2) whiteSpace = - 15
     gMeme.lines.push({ txt, size, align, color, sColor, pos, isInDrag, width: txt.length * size / 2 - whiteSpace, height: size })

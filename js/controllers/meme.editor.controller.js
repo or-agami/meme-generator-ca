@@ -47,6 +47,15 @@ function renderMemeLine({ txt, size, pos, align, color, sColor, }) {
     gCtx.shadowOffsetX = gCtx.shadowOffsetY = 2
     gCtx.strokeText(txt, pos.x, pos.y)
     gCtx.fillText(txt, pos.x, pos.y)
+    // console.log('isInEdit:', isInEdit);
+    // console.log('lineIdx:', lineIdx);
+    // if (isInEdit && lineIdx) {
+    //     gCtx.beginPath()
+    //     gCtx.shadowOffsetX = gCtx.shadowOffsetY = 0
+    //     gCtx.rect(0, pos.y - size / 1.7, gElCanvas.width, size * 1.1)
+    //     gCtx.stroke()
+    //     gCtx.closePath()
+    // }
 }
 
 function onDownloadMeme(elLink) {
@@ -145,6 +154,7 @@ function onCanvasDown(ev) {
     ev.preventDefault()
     const pos = getEvPos(ev)
     if (!isOnLine(pos)) return
+    renderMeme()
     updateLineIsInDrag(true)
     gDraggedLinePos = pos
 }
