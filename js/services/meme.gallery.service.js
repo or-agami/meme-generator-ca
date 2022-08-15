@@ -38,7 +38,7 @@ function initGalleryService() {
 }
 
 function getImgUrlById(imgId) {
-    const memeImg = gMemesImgs.find(meme => meme.id === imgId)
+    const memeImg = gMemesImgs.find(meme => meme.id === +imgId)
     return memeImg.url
 }
 
