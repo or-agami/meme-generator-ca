@@ -15,11 +15,11 @@ function onSetLang(lang) {
 }
 
 function onToggleNav() {
-    toggleMainNav(false)
+    toggleMainNav()
 }
 
 function onCloseNav() {
-    toggleMainNav(true)
+    toggleMainNav()
 }
 
 function onGoToGallery() {
@@ -44,12 +44,9 @@ function hideEditorWindow() {
     setTimeout(() => elEditorWindow.classList.add('inactive'), 600)
 }
 
-function toggleMainNav(navIsOpen) {
+function toggleMainNav() {
     const elOpenNavBtn = document.querySelector('.open-nav-btn')
     const elMainNav = document.querySelector('.main-nav')
-
-    if (navIsOpen) elMainNav.removeAttribute('onclick')
-    else elMainNav.setAttribute('onclick', 'onCloseNav()')
 
     elOpenNavBtn.classList.toggle('is-open')
     elMainNav.classList.toggle('main-nav-open')

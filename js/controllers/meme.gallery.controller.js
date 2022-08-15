@@ -24,7 +24,7 @@ function renderImgs() {
 }
 
 function renderResults(val) {
-    const res = document.getElementById("result")
+    const res = document.getElementById('result')
     let list = ''
     let terms = autocompleteMatch(val)
     res.innerHTML = ''
