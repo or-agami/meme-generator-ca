@@ -55,9 +55,9 @@
     object-fit: cover;
     cursor: pointer;
     border-radius: 1em;
-    transition: all 2.4s;
+    transition: scale .4s;
 }
 
 .meme-gallery img:hover {
-    mask-image: linear-gradient(#000000 40%, transparent 130%);
+    scale: 1.04;
 }
